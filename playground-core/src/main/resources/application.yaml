@@ -1,0 +1,167 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# debug模式
+# ----------------------------------------------------------------------------------------------------------------------
+debug:
+  false
+
+# ----------------------------------------------------------------------------------------------------------------------
+# 核心配置
+# ----------------------------------------------------------------------------------------------------------------------
+spring:
+  application:
+    name: "playground"
+  profiles:
+    active:
+      - "dev"
+    include:
+      - "ssl"
+  config:
+    import: [ ]
+  autoconfigure:
+    exclude:
+      - "org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration"
+  aop:
+    auto: true
+  main:
+    web-application-type: servlet
+    banner-mode: log
+    allow-bean-definition-overriding: true
+    allow-circular-references: false
+    log-startup-info: true
+    cloud-platform: none
+    lazy-initialization: false
+    register-shutdown-hook: true
+    sources: [ ]
+  banner:
+    location: "classpath:/META-INF/banner.txt"
+  jackson:
+    locale: "zh_CN"
+    time-zone: "Asia/Shanghai"
+    date-format: "yyyy-MM-dd HH:mm:ss.SSS"
+    default-property-inclusion: always
+    serialization:
+      indent-output: true
+      fail-on-self-references: true
+      fail-on-empty-beans: false
+      write-dates-as-timestamps: false
+      write-null-map-values: true
+      write-empty-json-arrays: true
+      write-single-elem-arrays-unwrapped: false
+      write-enums-using-to-string: true
+    deserialization:
+      fail-on-unknown-properties: false
+    mapper:
+      default-view-inclusion: true
+      accept-case-insensitive-enums: true
+  lifecycle:
+    timeout-per-shutdown-phase: "30s"
+  jmx:
+    enabled: false
+  web:
+    resources:
+      add-mappings: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: "1GB"
+      max-request-size: "2GB"
+  pid:
+    file: "/var/run/${spring.application.name}/pid"
+    fail-on-write-error: false
+  flyway:
+    enabled: false
+  security:
+    filter:
+      order: -200
+  jpa:
+    database: hsql
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: "org.hibernate.dialect.HSQLDialect"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# 服务器相关配置
+# ----------------------------------------------------------------------------------------------------------------------
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    protocol: "TLS"
+    client-auth: want
+    certificate: "classpath:/secret/server.pem"
+    certificate-private-key: "classpath:/secret/server.pem"
+    trust-certificate: "classpath:/secret/trust.pem"
+  servlet:
+    context-path: "/"
+  error:
+    whitelabel:
+      enabled: false
+  compression:
+    enabled: true
+    min-response-size: "1KB"
+  shutdown: graceful
+  tomcat:
+    threads:
+      max: 400
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Actuator
+# ----------------------------------------------------------------------------------------------------------------------
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      enabled: true
+      show-details: when_authorized
+      probes:
+        enabled: true
+    env:
+      enabled: true
+      show-values: when_authorized
+    info:
+      enabled: true
+    beans:
+      enabled: true
+  info:
+    env:
+      enabled: true
+    git:
+      enabled: true
+      mode: full
+    build:
+      enabled: true
+    os:
+      enabled: true
+    java:
+      enabled: true
+  endpoints:
+    web:
+      base-path: "/actuator"
+      exposure:
+        include: "*"
+    jmx:
+      domain: "com.github.yingzhuo.playground"
+      exposure:
+        include: "*"
+
+info:
+  authors:
+    - name: "应卓"
+      email: "yingzhor@gmail.com"
+  description: "竞技场"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# SQL日志
+# ----------------------------------------------------------------------------------------------------------------------
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true
+      logging: slf4j

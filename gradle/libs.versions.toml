@@ -1,0 +1,34 @@
+[versions]
+bouncy-castle = '1.79'
+spring-boot = '3.3.5'
+spring-turbo = '3.3.5'
+
+[libraries]
+jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
+
+mapstruct = 'org.mapstruct:mapstruct:1.6.2'
+
+bc-prov = { module = 'org.bouncycastle:bcprov-jdk18on', version.ref = 'bouncy-castle' }
+bc-pkix = { module = 'org.bouncycastle:bcpkix-jdk18on', version.ref = 'bouncy-castle' }
+bc-util = { module = 'org.bouncycastle:bcutil-jdk18on', version.ref = 'bouncy-castle' }
+
+p6spy-spring-boot-starter = { module = 'com.github.gavlyukovskiy:p6spy-spring-boot-starter', version = '1.9.2' }
+p6spy-core = 'p6spy:p6spy:3.9.1'
+
+spring-turbo-core = { module = 'com.github.yingzhuo:spring-turbo', version.ref = 'spring-turbo' }
+spring-turbo-conf = { module = 'com.github.yingzhuo:spring-turbo-module-configuration', version.ref = 'spring-turbo' }
+spring-turbo-webmvc = { module = 'com.github.yingzhuo:spring-turbo-module-webmvc', version.ref = 'spring-turbo' }
+spring-turbo-webcli = { module = 'com.github.yingzhuo:spring-turbo-module-webcli', version.ref = 'spring-turbo' }
+spring-turbo-jackson = { module = 'com.github.yingzhuo:spring-turbo-module-jackson', version.ref = 'spring-turbo' }
+spring-turbo-sec = { module = 'com.github.yingzhuo:spring-turbo-module-security', version.ref = 'spring-turbo' }
+spring-turbo-jwt = { module = 'com.github.yingzhuo:spring-turbo-module-jwt', version.ref = 'spring-turbo' }
+spring-turbo-misc = { module = 'com.github.yingzhuo:spring-turbo-module-misc', version.ref = 'spring-turbo' }
+
+[bundles]
+p6spy = ['p6spy-spring-boot-starter', 'p6spy-core']
+bouncy-castle = ['bc-prov', 'bc-pkix', 'bc-util']
+
+[plugins]
+spring-boot = { id = 'org.springframework.boot', version.ref = 'spring-boot' }
+git-props = { id = 'com.gorylenko.gradle-git-properties', version = '2.4.2' }
+docker = { id = 'com.bmuschko.docker-remote-api', version = '9.4.0' }

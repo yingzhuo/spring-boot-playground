@@ -1,0 +1,13 @@
+services:
+  playground:
+    image: "yingzhuo/spring-boot-playground:latest"
+    container_name: "playground"
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - "TZ=Asia/Shanghai"
+      - "LANG=zh_CN.UTF-8"
+      - "SPRING_PROFILES_ACTIVE=docker"
+    command: [ ]

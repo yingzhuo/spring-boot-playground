@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/lang/spring-context.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <bean class="org.springframework.security.core.authority.mapping.SimpleAuthorityMapper"
+          p:convertToUpperCase="true"
+          p:convertToLowerCase="false"
+          p:prefix="ROLE_"/>
+
+    <bean class="spring.turbo.module.security.encoder.PasswordEncoderFactories"
+          factory-method="createDelegatingPasswordEncoder"
+          c:encodingId="bcrypt"
+          c:defaultPasswordEncoderForMatches="noop"/>
+
+    <bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" factory-method="fromHierarchy"
+          c:_0="ROLE_X509 > ROLE_ADMIN > ROLE_USER > ROLE_ANONYMOUS"/>
+
+    <bean class="spring.turbo.module.jwt.alg.KeyPairPemJwtSignerFactoryBean">
+        <property name="certificateLocation" value="classpath:/secret/jwt.pem"/>
+        <property name="privateKeyLocation" value="classpath:/secret/jwt.pem"/>
+    </bean>
+
+</beans>

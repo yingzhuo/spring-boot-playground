@@ -1,0 +1,15 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# 核心配置
+# ----------------------------------------------------------------------------------------------------------------------
+spring:
+  ssl:
+    bundle:
+      pem:
+        "client":
+          reload-on-update: false
+          keystore:
+            certificate: "classpath:/secret/client.pem"
+            private-key: "classpath:/secret/client.pem"
+            private-key-password: "123456"
+          truststore:
+            certificate: "classpath:/secret/trust.pem"

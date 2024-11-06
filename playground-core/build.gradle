@@ -1,0 +1,135 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'application'
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.git.props)
+    alias(libs.plugins.docker)
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+        mavenBom SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+dependencies {
+
+    // 其他子项目
+    api project(':playground-include')
+
+    // spring-boot and spring
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.springframework:spring-context-indexer'
+    annotationProcessor 'org.springframework:spring-context-indexer'
+
+    // spring-security
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // spring-retry
+    implementation 'org.springframework.retry:spring-retry'
+
+    // spring-turbo
+    implementation(libs.spring.turbo.core)
+    implementation(libs.spring.turbo.conf)
+    implementation(libs.spring.turbo.jackson)
+    implementation(libs.spring.turbo.webmvc)
+    implementation(libs.spring.turbo.webcli)
+    implementation(libs.spring.turbo.misc)
+    implementation(libs.spring.turbo.sec)
+    implementation(libs.spring.turbo.jwt)
+
+    // DB相关
+    implementation 'org.hsqldb:hsqldb'
+    implementation(libs.bundles.p6spy)
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // mapstruct
+    implementation(libs.mapstruct)
+    annotationProcessor(libs.mapstruct)
+
+    // 监控
+    implementation 'io.micrometer:micrometer-observation'
+
+    // jsr305
+    compileOnly(libs.jsr305)
+}
+
+application {
+    bootDistTar {
+        enabled = false
+    }
+    distTar {
+        enabled = false
+    }
+    distZip {
+        enabled = false
+    }
+}
+
+gitProperties {
+    dateFormat = "yyyy-MM-dd'T'HH:mmZ"
+    dateFormatTimeZone = 'Asia/Shanghai'
+    keys = ['git.branch', 'git.commit.id', 'git.commit.time', 'git.commit.user.email', 'git.commit.user.name']
+}
+
+jar {
+    enabled = false
+}
+
+springBoot {
+    mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
+}
+
+bootJar {
+    version = "$rootProject.version"
+
+    manifest {
+        attributes(['Author'      : '应卓',
+                    'Author-Email': 'yingzhor@gmail.com',])
+    }
+
+    includeTools = false
+
+    layered {
+        enabled = false
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task dockerCopyDockerfile(group: 'docker', dependsOn: 'build', type: Copy) {
+    from('src/main/docker') {
+        include '**/*'
+    }
+    from('build/libs') {
+        include '**/*.jar'
+    }
+    exclude '**/.gitkeep'
+    into 'build/docker-context'
+    includeEmptyDirs = false
+}
+
+task dockerBuildImage(group: 'docker', dependsOn: 'dockerCopyDockerfile', type: DockerBuildImage) {
+    inputDir = file('build/docker-context')
+    images.add('yingzhuo/spring-boot-playground:latest')
+    images.add("yingzhuo/spring-boot-playground:$rootProject.version")
+}
