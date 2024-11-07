@@ -10,14 +10,14 @@ usage:
 	@echo "========================================================================================="
 
 wrapper:
-	@gradle -q wrapper \
+	@gradle wrapper \
 		--gradle-distribution-url 'https://mirrors.cloud.tencent.com/gradle/gradle-8.10.2-bin.zip'
 
 clean:
-	@gradlew -q clean
+	@gradlew clean
 
 compile:
-	@gradlew -q classes
+	@gradlew classes
 
 build:
 	@gradlew build
