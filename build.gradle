@@ -7,6 +7,7 @@ description 'Demo of SpringBoot/Spring/Gradle/Docker'
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号
 // 参考: https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
 ext['snakeyaml.version'] = '2.3'
+ext['jackson-bom.version'] = '2.17.3'
 
 allprojects {
 
@@ -24,7 +25,7 @@ allprojects {
     repositories {
         mavenLocal()
         maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
-        maven { name '阿里云-spring'; url 'https://maven.aliyun.com/repository/spring/' }
+        maven { name '阿里云(Spring)'; url 'https://maven.aliyun.com/repository/spring/' }
         maven { name 'Spring Snapshot'; url 'https://repo.spring.io/snapshot' }
         maven { name 'Spring Milestone'; url 'https://repo.spring.io/milestone' }
         mavenCentral()
@@ -36,7 +37,7 @@ allprojects {
             mavenLocal()
             gradlePluginPortal()
             maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
-            maven { name '阿里云-插件'; url 'https://maven.aliyun.com/repository/gradle-plugin' }
+            maven { name '阿里云(Plugin)'; url 'https://maven.aliyun.com/repository/gradle-plugin' }
             mavenCentral()
             google()
         }

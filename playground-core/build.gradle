@@ -1,20 +1,19 @@
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
-import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
     id 'application'
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.git.props)
-    alias(libs.plugins.docker)
+    alias(libs.plugins.docker.building)
 }
 
 apply plugin: 'io.spring.dependency-management'
 
-dependencyManagement {
-    imports {
-        mavenBom SpringBootPlugin.BOM_COORDINATES
-    }
-}
+//dependencyManagement {
+//    imports {
+//        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+//    }
+//}
 
 dependencies {
 
@@ -43,13 +42,13 @@ dependencies {
     implementation 'org.springframework.retry:spring-retry'
 
     // spring-turbo
-    implementation(libs.spring.turbo.core)
+    implementation(libs.spring.turbo)
     implementation(libs.spring.turbo.conf)
     implementation(libs.spring.turbo.jackson)
     implementation(libs.spring.turbo.webmvc)
     implementation(libs.spring.turbo.webcli)
     implementation(libs.spring.turbo.misc)
-    implementation(libs.spring.turbo.sec)
+    implementation(libs.spring.turbo.security)
     implementation(libs.spring.turbo.jwt)
 
     // DB相关
@@ -95,6 +94,7 @@ jar {
 
 springBoot {
     mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
+    buildInfo()
 }
 
 bootJar {
