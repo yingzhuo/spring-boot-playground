@@ -2,18 +2,12 @@ import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
 plugins {
     id 'application'
-    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.boot) apply true
     alias(libs.plugins.git.props)
     alias(libs.plugins.docker.building)
 }
 
 apply plugin: 'io.spring.dependency-management'
-
-//dependencyManagement {
-//    imports {
-//        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
-//    }
-//}
 
 dependencies {
 
@@ -102,7 +96,7 @@ bootJar {
 
     manifest {
         attributes(['Author'      : '应卓',
-                    'Author-Email': 'yingzhor@gmail.com',])
+                    'Author-Email': 'yingzhor@gmail.com'])
     }
 
     includeTools = false
