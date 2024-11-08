@@ -29,8 +29,8 @@ dependencies {
     // slf4j
     implementation 'org.slf4j:slf4j-api'
 
-    // jsr305
-    compileOnly(libs.jsr305)
+    // findbugs
+    compileOnly(libs.findbugs)
 }
 
 jar {
