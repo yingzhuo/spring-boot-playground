@@ -41,13 +41,13 @@ dependencies {
     implementation(libs.spring.turbo.jackson)
     implementation(libs.spring.turbo.webmvc)
     implementation(libs.spring.turbo.webcli)
-    implementation(libs.spring.turbo.misc)
     implementation(libs.spring.turbo.security)
     implementation(libs.spring.turbo.jwt)
+    implementation(libs.spring.turbo.misc)
 
     // DB相关
     implementation 'org.hsqldb:hsqldb'
-    implementation(libs.bundles.p6spy)
+    implementation(libs.p6spy.spring.boot)
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
@@ -65,6 +65,8 @@ dependencies {
 }
 
 application {
+    mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
+
     bootDistTar {
         enabled = false
     }
