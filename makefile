@@ -15,6 +15,7 @@ wrapper:
 
 clean:
 	@gradlew clean
+	@rm -rf $(CURDIR)/logs/*.log*
 
 compile:
 	@gradlew classes
