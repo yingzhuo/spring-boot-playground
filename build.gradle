@@ -18,7 +18,9 @@ allprojects {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
         compileJava.options.encoding 'UTF-8'
+        compileJava.options.debugOptions.debugLevel = "source,lines,vars"
         compileTestJava.options.encoding 'UTF-8'
+        compileTestJava.options.debugOptions.debugLevel = "source,lines,vars"
         // withSourcesJar()
     }
 
