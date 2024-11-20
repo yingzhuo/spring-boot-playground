@@ -12,12 +12,12 @@
        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/lang/spring-context.xsd">
 
-    <bean id="shardThreadPool" class="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean">
+    <bean id="sharedThreadPool" class="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean">
         <property name="corePoolSize" value="15"/>
         <property name="maxPoolSize" value="45"/>
         <property name="awaitTerminationSeconds" value="90"/>
         <property name="queueCapacity" value="60"/>
-        <property name="threadNamePrefix" value="spring-thread-pool-"/>
+        <property name="threadNamePrefix" value="shared-thread-pool-"/>
     </bean>
 
 </beans>
