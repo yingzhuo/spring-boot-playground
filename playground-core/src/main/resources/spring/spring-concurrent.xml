@@ -13,10 +13,10 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/lang/spring-context.xsd">
 
     <bean id="sharedThreadPool" class="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean">
-        <property name="corePoolSize" value="15"/>
-        <property name="maxPoolSize" value="45"/>
-        <property name="awaitTerminationSeconds" value="90"/>
-        <property name="queueCapacity" value="60"/>
+        <property name="corePoolSize" value="50"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="awaitTerminationSeconds" value="900"/>
+        <property name="queueCapacity" value="300"/>
         <property name="threadNamePrefix" value="shared-thread-pool-"/>
     </bean>
 
