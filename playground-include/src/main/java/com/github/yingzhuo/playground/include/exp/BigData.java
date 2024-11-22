@@ -2,6 +2,7 @@ package com.github.yingzhuo.playground.include.exp;
 
 import java.io.Serializable;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 /**
  * 测试用巨型对象
@@ -31,6 +32,21 @@ public final class BigData implements Serializable {
 
     public int getSize() {
         return this.data.length;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BigData bigData = (BigData) o;
+
+        return Arrays.equals(data, bigData.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(data);
     }
 
 }

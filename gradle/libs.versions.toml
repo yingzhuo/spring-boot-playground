@@ -1,7 +1,7 @@
 [versions]
 bouncy-castle = '1.79'
 spring-boot = '3.3.5'
-spring-turbo = '3.3.5-1'
+spring-turbo = '3.3.5-2'
 
 [libraries]
 findbugs = 'com.google.code.findbugs:jsr305:3.0.2'
