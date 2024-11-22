@@ -2,6 +2,7 @@ package com.github.yingzhuo.playground.task;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,9 @@ import java.util.function.Supplier;
 
 @Slf4j
 @Component
+@ConditionalOnProperty(prefix = "playground.bean-switch", name = "slow-async-task", havingValue = "true")
 @RequiredArgsConstructor
-public class SlowTask {
+public class SlowAsyncTask {
 
     private final ThreadPoolTaskExecutor threadPool;
 
