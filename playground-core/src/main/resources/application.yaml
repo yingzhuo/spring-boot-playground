@@ -83,6 +83,15 @@ spring:
       hibernate:
         format_sql: true
         dialect: "org.hibernate.dialect.HSQLDialect"
+  task:
+    execution:
+      thread-name-prefix: "common-task-"
+      pool:
+        core-size: 15
+        max-size: 30
+        keep-alive: 60s
+        queue-capacity: 45
+        allow-core-thread-timeout: true
 
 # ----------------------------------------------------------------------------------------------------------------------
 # 服务器相关配置

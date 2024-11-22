@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Slf4j
 //@Component
+@Deprecated
 public class MemLeakingTask {
 
     private final Set<BigData> wastedMemory = new HashSet<>();

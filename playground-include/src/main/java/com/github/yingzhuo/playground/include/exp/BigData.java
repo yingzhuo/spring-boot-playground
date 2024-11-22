@@ -10,6 +10,12 @@ import java.util.Arrays;
 public final class BigData implements Serializable {
 
     private static final SecureRandom RANDOM = new SecureRandom();
+    private final byte[] data;
+
+    private BigData(int size) {
+        this.data = new byte[size];
+        RANDOM.nextBytes(this.data);
+    }
 
     public static BigData _1mb() {
         return new BigData(1024 * 1024);
@@ -21,13 +27,6 @@ public final class BigData implements Serializable {
 
     public static BigData _10mb() {
         return new BigData(1024 * 1024 * 10);
-    }
-
-    private final byte[] data;
-
-    private BigData(int size) {
-        this.data = new byte[size];
-        RANDOM.nextBytes(this.data);
     }
 
     public int getSize() {
