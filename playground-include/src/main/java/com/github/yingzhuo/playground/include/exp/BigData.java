@@ -29,6 +29,10 @@ public final class BigData implements Serializable {
         return new BigData(1024 * 1024 * 10);
     }
 
+    public static BigData _20mb() {
+        return new BigData(1024 * 1024 * 20);
+    }
+
     public int getSize() {
         return this.data.length;
     }
@@ -46,6 +50,11 @@ public final class BigData implements Serializable {
     @Override
     public int hashCode() {
         return Arrays.hashCode(data);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(data);
     }
 
 }
