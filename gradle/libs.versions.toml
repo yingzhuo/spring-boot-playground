@@ -1,18 +1,18 @@
 [versions]
 bouncy-castle = '1.79'
 spring-boot = '3.4.0'
-spring-turbo = '3.4.0-SNAPSHOT'
+spring-turbo = '3.4.0'
 
 [libraries]
 findbugs = 'com.google.code.findbugs:jsr305:3.0.2'
 
-mapstruct = 'org.mapstruct:mapstruct:1.6.2'
+mapstruct = 'org.mapstruct:mapstruct:1.6.3'
 
 bc-prov = { module = 'org.bouncycastle:bcprov-jdk18on', version.ref = 'bouncy-castle' }
 bc-pkix = { module = 'org.bouncycastle:bcpkix-jdk18on', version.ref = 'bouncy-castle' }
 bc-util = { module = 'org.bouncycastle:bcutil-jdk18on', version.ref = 'bouncy-castle' }
 
-p6spy-spring-boot = 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.2'
+p6spy-spring-boot = 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.10.0'
 
 spring-turbo = { module = 'com.github.yingzhuo:spring-turbo', version.ref = 'spring-turbo' }
 spring-turbo-conf = { module = 'com.github.yingzhuo:spring-turbo-module-configuration', version.ref = 'spring-turbo' }
