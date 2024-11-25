@@ -4,7 +4,7 @@ spring-boot = '3.4.0'
 spring-turbo = '3.4.0'
 
 [libraries]
-findbugs = 'com.google.code.findbugs:jsr305:3.0.2'
+findbugs = 'com.github.spotbugs:spotbugs-annotations:4.8.6'
 
 mapstruct = 'org.mapstruct:mapstruct:1.6.3'
 

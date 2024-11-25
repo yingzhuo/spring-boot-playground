@@ -3,14 +3,11 @@ package com.github.yingzhuo.playground;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.core.env.Profiles;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.RequestCacheConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -121,11 +118,9 @@ public class ApplicationBootSecurity {
         return http.build();
     }
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer(Environment environment) {
-        return web -> web.debug(
-                environment.acceptsProfiles(Profiles.of("develop"))
-        );
-    }
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer(Environment environment) {
+//        return web -> web.debug(environment.acceptsProfiles(Profiles.of("debug")));
+//    }
 
 }
