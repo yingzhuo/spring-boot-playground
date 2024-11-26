@@ -32,6 +32,8 @@
     <logger name="io.github.resilience4j" additivity="true" level="debug"/>
     <logger name="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition" additivity="true" level="info"/>
     <logger name="io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition" additivity="true" level="info"/>
+    <logger name="io.lettuce" additivity="true" level="info"/>
+    <logger name="io.netty" additivity="true" level="info"/>
 
     <!--
     自信关闭

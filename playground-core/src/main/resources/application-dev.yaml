@@ -4,3 +4,17 @@
 spring:
   config:
     import: [ ]
+  data:
+    redis:
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 8
+          max-wait: -1ms
+          max-idle: 8
+          min-idle: 0
+      database: 0
+      host: "localhost"
+      port: 6379
+      username: ""
+      password: "133810"

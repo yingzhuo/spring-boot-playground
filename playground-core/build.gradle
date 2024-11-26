@@ -26,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     compileOnly 'org.springframework:spring-context-indexer'
     annotationProcessor 'org.springframework:spring-context-indexer'
 
@@ -44,6 +45,9 @@ dependencies {
     implementation(libs.spring.turbo.security)
     implementation(libs.spring.turbo.jwt)
     implementation(libs.spring.turbo.misc)
+
+    // 对象池
+    implementation('org.apache.commons:commons-pool2')
 
     // DB相关
     implementation 'org.hsqldb:hsqldb'

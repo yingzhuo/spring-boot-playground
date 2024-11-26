@@ -11,8 +11,10 @@ import org.springframework.context.annotation.ImportResource;
 public class ApplicationBoot {
 
     public static void main(String[] args) {
+        // @formatter:off
         new SpringApplicationBuilder(ApplicationBoot.class)
                 .run(args);
+        // @formatter:on
     }
 
 }
