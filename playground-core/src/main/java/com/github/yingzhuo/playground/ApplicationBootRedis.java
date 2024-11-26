@@ -12,14 +12,14 @@ public class ApplicationBootRedis {
 
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory connectionFactory) {
-        var template = new RedisTemplate<String, String>();
-        template.setConnectionFactory(connectionFactory);
-        template.setDefaultSerializer(RedisSerializer.string());
-        template.setKeySerializer(RedisSerializer.string());
-        template.setValueSerializer(RedisSerializer.string());
-        template.setHashKeySerializer(RedisSerializer.string());
-        template.setHashValueSerializer(RedisSerializer.string());
-        return template;
+        final var bean = new RedisTemplate<String, String>();
+        bean.setConnectionFactory(connectionFactory);
+        bean.setDefaultSerializer(RedisSerializer.string());
+        bean.setKeySerializer(RedisSerializer.string());
+        bean.setValueSerializer(RedisSerializer.string());
+        bean.setHashKeySerializer(RedisSerializer.string());
+        bean.setHashValueSerializer(RedisSerializer.string());
+        return bean;
     }
 
     @Bean
