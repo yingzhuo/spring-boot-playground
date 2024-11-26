@@ -13,8 +13,15 @@ spring:
           max-wait: -1ms
           max-idle: 8
           min-idle: 0
+        cluster:
+          refresh:
+            # 在集群模式下必须要自动刷新拓扑
+            adaptive: true
+            period: 2s
       database: 0
       host: "localhost"
       port: 6379
       username: ""
       password: "133810"
+#      cluster:
+#        nodes: ""
