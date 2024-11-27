@@ -12,7 +12,7 @@ public class ApplicationBootRedis {
 
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory connectionFactory) {
-        final var bean = new RedisTemplate<String, String>();
+        var bean = new RedisTemplate<String, String>();
         bean.setConnectionFactory(connectionFactory);
         bean.setDefaultSerializer(RedisSerializer.string());
         bean.setKeySerializer(RedisSerializer.string());
