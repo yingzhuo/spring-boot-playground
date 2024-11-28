@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.spring.turbo.security)
     implementation(libs.spring.turbo.jwt)
     implementation(libs.spring.turbo.misc)
+    implementation(libs.spring.turbo.redis)
 
     // 对象池
     implementation('org.apache.commons:commons-pool2')

@@ -22,6 +22,7 @@ spring-turbo-jackson = { module = 'com.github.yingzhuo:spring-turbo-module-jacks
 spring-turbo-security = { module = 'com.github.yingzhuo:spring-turbo-module-security', version.ref = 'spring-turbo' }
 spring-turbo-jwt = { module = 'com.github.yingzhuo:spring-turbo-module-jwt', version.ref = 'spring-turbo' }
 spring-turbo-misc = { module = 'com.github.yingzhuo:spring-turbo-module-misc', version.ref = 'spring-turbo' }
+spring-turbo-redis = { module = 'com.github.yingzhuo:spring-turbo-module-redis', version.ref = 'spring-turbo' }
 
 [bundles]
 bouncy-castle = ['bc-prov', 'bc-pkix', 'bc-util']
