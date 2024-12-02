@@ -54,6 +54,9 @@ dependencies {
     implementation 'org.hsqldb:hsqldb'
     implementation(libs.p6spy.spring.boot)
 
+    // Redis相关
+    implementation(libs.redisson.spring.boot)
+
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
