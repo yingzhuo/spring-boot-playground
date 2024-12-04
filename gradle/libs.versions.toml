@@ -28,6 +28,8 @@ spring-turbo-redis = { module = 'com.github.yingzhuo:spring-turbo-module-redis',
 redisson-spring-boot = { module = 'org.redisson:redisson-spring-boot-starter', version.ref = 'redisson' }
 redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:0.1.1'
 
+mysql = 'com.mysql:mysql-connector-j:9.1.0'
+
 [bundles]
 bouncy-castle = ['bc-prov', 'bc-pkix', 'bc-util']
 

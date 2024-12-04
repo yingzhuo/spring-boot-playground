@@ -4,6 +4,11 @@
 spring:
   config:
     import: [ ]
+  datasource:
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    username: "root"
+    password: "root"
+    url: "jdbc:mysql://127.0.0.1:3306/SpringBootPlayground"
   data:
     redis:
       lettuce:
@@ -15,8 +20,7 @@ spring:
           min-idle: 0
         cluster:
           refresh:
-            # 在集群模式下必须要自动刷新拓扑
-            adaptive: true
+            adaptive: true # 在集群模式下必须要自动刷新拓扑
             period: 2s
       database: 0
       host: "localhost"
@@ -24,10 +28,3 @@ spring:
       password: "133810"
 #      cluster:
 #        nodes: ""
-
-red-lock:
-  enabled: true
-  nodes:
-    - address: "127.0.0.1:6379"
-      username: ""
-      password: "133810"

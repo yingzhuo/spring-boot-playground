@@ -1,6 +1,5 @@
 package com.github.yingzhuo.playground;
 
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,6 @@ import javax.sql.DataSource;
 @EnableJpaRepositories("com.github.yingzhuo.playground.dao")
 @EntityScan("com.github.yingzhuo.playground.entity")
 @EnableTransactionManagement
-@AutoConfigureAfter(ApplicationBootDatabase.class)
 public class ApplicationBootJpa {
 
     @Bean
