@@ -28,3 +28,16 @@ spring:
       password: "133810"
 #      cluster:
 #        nodes: ""
+
+# ----------------------------------------------------------------------------------------------------------------------
+# 分布式锁配置
+# ----------------------------------------------------------------------------------------------------------------------
+red-lock:
+  enabled: true
+  allow-downgrade-to-non-multi-lock: true
+  nodes:
+    - address: "redis://localhost:6379"
+      username: ""
+      password: "133810"
+  aspect-advice:
+    enabled: true
