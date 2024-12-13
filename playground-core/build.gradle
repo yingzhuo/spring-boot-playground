@@ -56,7 +56,7 @@ dependencies {
 
     // redisson
     implementation(libs.redisson.spring.boot)
-    implementation 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.0'
+    implementation(libs.redisson.redlock.spring.boot)
 
     // lombok
     compileOnly 'org.projectlombok:lombok'

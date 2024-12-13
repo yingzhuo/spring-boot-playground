@@ -23,21 +23,33 @@ spring:
             adaptive: true # 在集群模式下必须要自动刷新拓扑
             period: 2s
       database: 0
-      host: "localhost"
-      port: 6379
-      password: "133810"
-#      cluster:
-#        nodes: ""
+      #      host: "localhost"
+      #      port: 6379
+      password: "redis"
+      cluster:
+        nodes:
+          - "192.168.31.165:6379"
+          - "192.168.31.165:6380"
+          - "192.168.31.166:6379"
+          - "192.168.31.166:6380"
+          - "192.168.31.167:6379"
+          - "192.168.31.167:6380"
 
 # ----------------------------------------------------------------------------------------------------------------------
 # 分布式锁配置
 # ----------------------------------------------------------------------------------------------------------------------
 red-lock:
   enabled: true
-  allow-downgrade-to-non-multi-lock: true
+  allow-downgrade-to-non-multi-lock: false
   nodes:
-    - address: "redis://localhost:6379"
-      username: ""
-      password: "133810"
+    - address: "redis://192.168.31.165:7000"
+      password: "redis"
+      database: 0
+    - address: "redis://192.168.31.166:7000"
+      password: "redis"
+      database: 0
+    - address: "redis://192.168.31.167:7000"
+      password: "redis"
+      database: 0
   aspect-advice:
     enabled: true
