@@ -2,7 +2,7 @@
 bouncy-castle = '1.79'
 spring-boot = '3.4.0'
 spring-turbo = '3.4.0-3'
-redisson = '3.40.1'
+redisson = '3.40.2'
 
 [libraries]
 findbugs = 'com.github.spotbugs:spotbugs-annotations:4.8.6'
@@ -26,7 +26,7 @@ spring-turbo-misc = { module = 'com.github.yingzhuo:spring-turbo-module-misc', v
 spring-turbo-redis = { module = 'com.github.yingzhuo:spring-turbo-module-redis', version.ref = 'spring-turbo' }
 
 redisson-spring-boot = { module = 'org.redisson:redisson-spring-boot-starter', version.ref = 'redisson' }
-redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.1'
+redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.2'
 
 mysql = 'com.mysql:mysql-connector-j:9.1.0'
 
