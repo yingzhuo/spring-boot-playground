@@ -34,6 +34,9 @@
     <logger name="io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition" additivity="true" level="info"/>
     <logger name="io.lettuce" additivity="true" level="info"/>
     <logger name="io.netty" additivity="true" level="info"/>
+    <logger name="org.redisson" additivity="true" level="info"/>
+    <logger name="com.xxl.job" additivity="true" level="info"/>
+    <logger name="com.zaxxer.hikari" additivity="true" level="info"/>
 
     <!--
     自信关闭

@@ -58,6 +58,9 @@ dependencies {
     implementation(libs.redisson.spring.boot)
     implementation(libs.redisson.redlock.spring.boot)
 
+    // 任务调度
+    implementation(libs.xxljob.core)
+
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
