@@ -25,7 +25,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-logging'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     compileOnly 'org.springframework:spring-context-indexer'
     annotationProcessor 'org.springframework:spring-context-indexer'
@@ -51,15 +50,19 @@ dependencies {
     implementation('org.apache.commons:commons-pool2')
 
     // DB相关
-    implementation(libs.mysql)
-    implementation(libs.p6spy.spring.boot)
+    implementation(libs.mysql) // jdbc驱动
+    implementation(libs.p6spy.spring.boot) // sql格式化输出
+
+    // ORM
+    implementation('com.baomidou:mybatis-plus-spring-boot3-starter:3.5.9')
+    implementation('org.mybatis:mybatis:3.5.17')
 
     // redisson
-    implementation(libs.redisson.spring.boot)
+    //implementation(libs.redisson.spring.boot)
     implementation(libs.redisson.redlock.spring.boot)
 
     // 任务调度
-    implementation(libs.xxljob.core)
+    // implementation(libs.xxljob.core)
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
@@ -70,7 +73,7 @@ dependencies {
     annotationProcessor(libs.mapstruct)
 
     // 监控
-    implementation 'io.micrometer:micrometer-observation'
+    //implementation 'io.micrometer:micrometer-observation'
 
     // findbugs
     compileOnly(libs.findbugs)

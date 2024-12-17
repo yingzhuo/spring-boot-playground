@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -35,21 +34,6 @@ record UserWrapper(User user) implements UserDetails {
     public boolean isEnabled() {
         return Optional.ofNullable(user.getEnabled())
                 .orElse(Boolean.TRUE);
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        var expiredTime = user.getExpiredTime();
-        if (expiredTime == null) {
-            return true;
-        }
-        return LocalDateTime.now().isBefore(expiredTime);
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !Optional.ofNullable(user.getAccountLocked())
-                .orElse(Boolean.FALSE);
     }
 
 }

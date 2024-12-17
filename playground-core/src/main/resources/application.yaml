@@ -73,16 +73,6 @@ spring:
   security:
     filter:
       order: -200
-  jpa:
-    database: mysql
-    show-sql: false
-    open-in-view: false
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: "org.hibernate.dialect.MySQLDialect"
   task:
     execution:
       thread-name-prefix: "common-task-"
@@ -123,20 +113,12 @@ server:
 # ----------------------------------------------------------------------------------------------------------------------
 management:
   endpoint:
-    shutdown:
-      enabled: true
     health:
-      enabled: true
       show-details: when_authorized
       probes:
         enabled: true
     env:
-      enabled: true
       show-values: when_authorized
-    info:
-      enabled: true
-    beans:
-      enabled: true
   info:
     env:
       enabled: true
@@ -164,6 +146,15 @@ info:
     - name: "应卓"
       email: "yingzhor@gmail.com"
   description: "竞技场"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# MyBatis / MyBatis-Plus
+# ----------------------------------------------------------------------------------------------------------------------
+mybatis-plus:
+  inject-sql-session-on-mapper-scan: true
+  mapperLocations:
+    - "classpath*:/mybatis-mapper/**/*.xml"
+  type-aliases-package: "com.github.yingzhuo.playground.entity"
 
 # ----------------------------------------------------------------------------------------------------------------------
 # SQL日志

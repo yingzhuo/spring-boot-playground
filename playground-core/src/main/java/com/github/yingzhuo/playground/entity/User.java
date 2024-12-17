@@ -1,42 +1,38 @@
 package com.github.yingzhuo.playground.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * @author 应卓
  */
-@Data
-@Entity
-@Table(name = "t_user")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@TableName("t_user")
 public class User implements Serializable {
 
-    @Id
-    @Column(name = "id")
+    @TableId
     private Long id;
 
-    @Column(name = "username")
+    @TableField("username")
     private String username;
 
-    @Column(name = "password")
+    @TableField("password")
     private String password;
 
-    @Column(name = "authorities")
+    @TableField("authorities")
     private String authorities;
 
-    @Column(name = "enabled")
+    @TableField("enabled")
     private Boolean enabled;
-
-    @Column(name = "locked")
-    private Boolean accountLocked;
-
-    @Column(name = "expired_time")
-    private LocalDateTime expiredTime;
 
 }
