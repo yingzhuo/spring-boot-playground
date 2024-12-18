@@ -1,11 +1,13 @@
 package com.github.yingzhuo.playground;
 
 import com.github.yingzhuo.playground.properties.ServerAdditionalProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import spring.turbo.module.webmvc.tomcat.AdditionalPortTomcatWebServerCustomizer;
 
 @Configuration
+@RequiredArgsConstructor
 public class ApplicationBootTomcat {
 
     @Bean

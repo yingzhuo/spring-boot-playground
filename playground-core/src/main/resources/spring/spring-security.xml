@@ -19,11 +19,6 @@
           p:convertToLowerCase="false"
           p:prefix="ROLE_"/>
 
-    <bean class="spring.turbo.module.security.encoder.PasswordEncoderFactories"
-          factory-method="createDelegatingPasswordEncoder"
-          c:encodingId="bcrypt"
-          c:defaultPasswordEncoderForMatches="noop"/>
-
     <bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" factory-method="fromHierarchy"
           c:_0="ROLE_X509 > ROLE_ADMIN > ROLE_USER > ROLE_ANONYMOUS"/>
 

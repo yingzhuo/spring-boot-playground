@@ -52,17 +52,10 @@ dependencies {
     // DB相关
     implementation(libs.mysql) // jdbc驱动
     implementation(libs.p6spy.spring.boot) // sql格式化输出
+    implementation(libs.bundles.mybatis)
 
-    // ORM
-    implementation('com.baomidou:mybatis-plus-spring-boot3-starter:3.5.9')
-    implementation('org.mybatis:mybatis:3.5.17')
-
-    // redisson
-    //implementation(libs.redisson.spring.boot)
+    // redisson / redlock
     implementation(libs.redisson.redlock.spring.boot)
-
-    // 任务调度
-    // implementation(libs.xxljob.core)
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
@@ -71,9 +64,6 @@ dependencies {
     // mapstruct
     implementation(libs.mapstruct)
     annotationProcessor(libs.mapstruct)
-
-    // 监控
-    //implementation 'io.micrometer:micrometer-observation'
 
     // findbugs
     compileOnly(libs.findbugs)

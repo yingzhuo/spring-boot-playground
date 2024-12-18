@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class JpaUserDetailsService implements UserDetailsService {
+public class JdbcUserDetailsService implements UserDetailsService {
 
     private final UserMapper userMapper;
 

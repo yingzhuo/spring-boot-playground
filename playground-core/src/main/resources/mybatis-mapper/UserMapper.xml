@@ -4,6 +4,7 @@
 
     <select id="findByUsername" resultType="User">
         <!-- @formatter:off -->
+        <![CDATA[
         SELECT
             id,
             username,
@@ -14,6 +15,26 @@
             t_user AS u
         WHERE
             u.username = #{username}
+        ]]>
+        <!-- @formatter:on -->
+    </select>
+
+    <select id="findByUsernameAndPassword" resultType="User">
+        <!-- @formatter:off -->
+        <![CDATA[
+        SELECT
+            id,
+            username,
+            password,
+            authorities,
+            enabled
+        FROM
+            t_user AS u
+        WHERE
+            u.username = #{username}
+        AND
+            u.password = #{password}
+        ]]>
         <!-- @formatter:on -->
     </select>
 

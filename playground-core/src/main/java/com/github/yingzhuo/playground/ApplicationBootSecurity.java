@@ -4,18 +4,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.RequestCacheConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
-import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 import spring.turbo.module.security.authentication.TokenToUserConverter;
+import spring.turbo.module.security.encoder.EncodingIds;
+import spring.turbo.module.security.encoder.PasswordEncoderFactories;
 import spring.turbo.module.security.exception.SecurityExceptionHandler;
 import spring.turbo.module.security.filter.factory.JwtTokenAuthenticationFilterFactoryBean;
 
@@ -26,9 +27,6 @@ import spring.turbo.module.security.filter.factory.JwtTokenAuthenticationFilterF
         jsr250Enabled = true
 )
 public class ApplicationBootSecurity {
-
-    private static final AuthorizationManager<RequestAuthorizationContext> SHUT_DOWN_AUTHORIZATION_MANAGER
-            = new WebExpressionAuthorizationManager("hasAuthority('ROLE_X509') and hasIpAddress('127.0.0.1/32')");
 
     @Bean
     public JwtTokenAuthenticationFilterFactoryBean jwtTokenAuthenticationFilterFactoryBean(
@@ -42,10 +40,13 @@ public class ApplicationBootSecurity {
     }
 
     @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder(EncodingIds.bcrypt, EncodingIds.noop);
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-        var context = http.getSharedObject(ApplicationContext.class);
-
+        final var context = http.getSharedObject(ApplicationContext.class);
         final var exceptionHandler = context.getBean(SecurityExceptionHandler.class);
 
         http.securityMatcher("/**");
@@ -110,7 +111,6 @@ public class ApplicationBootSecurity {
         http.authorizeHttpRequests(c ->
                 c.requestMatchers(HttpMethod.POST, "/security/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/favicon.ico").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/actuator/shutdown").access(SHUT_DOWN_AUTHORIZATION_MANAGER)
                         .requestMatchers(HttpMethod.GET, "/actuator", "/actuator/**").permitAll()
                         .anyRequest().hasAuthority("ROLE_USER")
         );
@@ -118,9 +118,9 @@ public class ApplicationBootSecurity {
         return http.build();
     }
 
-//    @Bean
-//    public WebSecurityCustomizer webSecurityCustomizer(Environment environment) {
-//        return web -> web.debug(environment.acceptsProfiles(Profiles.of("debug")));
-//    }
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return web -> web.debug(false);
+    }
 
 }

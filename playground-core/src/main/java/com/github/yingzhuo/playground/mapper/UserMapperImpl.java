@@ -2,16 +2,46 @@ package com.github.yingzhuo.playground.mapper;
 
 import com.github.yingzhuo.playground.entity.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.lang.Nullable;
+import org.springframework.util.StringUtils;
 
+import java.util.Map;
+
+@Slf4j
 @RequiredArgsConstructor
-class UserMapperImpl implements UserMapperExt {
+public class UserMapperImpl implements UserMapperExt {
 
     private final SqlSession sqlSession;
 
     @Override
-    public User findByUsername(String username) {
-        return sqlSession.selectOne("findByUsername", username);
+    @Nullable
+    public User findByUsername(@Nullable String username) {
+        if (!StringUtils.hasText(username)) {
+            return null;
+        }
+        var params = Map.of("username", username);
+        return sqlSession.selectOne("findByUsername", params);
+    }
+
+    @Override
+    @Nullable
+    public User findByUsernameAndPassword(@Nullable String username, @Nullable String password) {
+        if (!StringUtils.hasText(username)) {
+            return null;
+        }
+
+        if (!StringUtils.hasText(password)) {
+            return null;
+        }
+
+        var params = Map.of(
+                "username", username,
+                "password", password
+        );
+
+        return sqlSession.selectOne("findByUsernameAndPassword", params);
     }
 
 }

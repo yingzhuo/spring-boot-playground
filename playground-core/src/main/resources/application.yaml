@@ -151,7 +151,10 @@ info:
 # MyBatis / MyBatis-Plus
 # ----------------------------------------------------------------------------------------------------------------------
 mybatis-plus:
-  inject-sql-session-on-mapper-scan: true
+  global-config:
+    banner: false
+    db-config:
+      table-prefix: "t_"
   mapperLocations:
     - "classpath*:/mybatis-mapper/**/*.xml"
   type-aliases-package: "com.github.yingzhuo.playground.entity"
