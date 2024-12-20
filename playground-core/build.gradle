@@ -69,8 +69,10 @@ dependencies {
     compileOnly(libs.findbugs)
 }
 
+def entryClassName = 'com.github.yingzhuo.playground.ApplicationBoot'
+
 application {
-    mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
+    mainClass = entryClassName
 
     bootDistTar {
         enabled = false
@@ -110,8 +112,7 @@ bootJar {
     // launchScript()
 
     manifest {
-        attributes(['Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher',
-                    'Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot'])
+        attributes(['Start-Class': entryClassName])
     }
 
     includeTools = false
@@ -119,6 +120,8 @@ bootJar {
     layered {
         enabled = false
     }
+
+    excludes = ['**/.DS_Store']
 }
 
 test {

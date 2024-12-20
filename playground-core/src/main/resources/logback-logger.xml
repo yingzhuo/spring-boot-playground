@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="false">
-
-    <!--
-    logback文件位置可以通过以下方式动态指定
-    java -Dlogback.configurationFile=/path/to/logback.xml -jar app.jar
-    -->
-
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5level %logger{72}[%L] - %msg%n</pattern>
-        </encoder>
-    </appender>
+<included>
 
     <!--
     logger 配置
     -->
-    <logger name="com.github.yingzhuo.playground" additivity="true" level="debug"/>
     <logger name="spring.turbo" additivity="true" level="debug"/>
     <logger name="org.jboss.logging" additivity="true" level="info"/>
     <logger name="org.hibernate.validator" additivity="true" level="info"/>
     <logger name="org.hibernate.validator.internal.util.Version" additivity="true" level="warn"/>
     <logger name="io.micrometer" additivity="true" level="info"/>
     <logger name="org.springframework" additivity="true" level="info"/>
-    <logger name="org.springframework.boot.context.ApplicationPidFileWriter" additivity="true" level="off"/>
+    <logger name="org.springframework.boot.context.ApplicationPidFileWriter" additivity="true"
+            level="off"/>
     <logger name="org.springframework.security" additivity="true" level="debug"/>
-    <logger name="org.springframework.security.config.annotation.web.builders.WebSecurity" additivity="true"
+    <logger name="org.springframework.security.config.annotation.web.builders.WebSecurity"
+            additivity="true"
             level="error"/>
-    <logger name="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" additivity="true"
+    <logger name="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl"
+            additivity="true"
             level="info"/>
     <logger name="org.hibernate" additivity="true" level="info"/>
     <logger name="org.hibernate.SQL" additivity="true" level="info"/>
@@ -35,22 +26,26 @@
     <logger name="org.apache.hc" additivity="true" level="info"/>
     <logger name="com.jayway.jsonpath" additivity="true" level="info"/>
     <logger name="io.github.resilience4j" additivity="true" level="debug"/>
-    <logger name="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition" additivity="true" level="info"/>
-    <logger name="io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition" additivity="true" level="info"/>
+    <logger name="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition"
+            additivity="true" level="info"/>
+    <logger name="io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition"
+            additivity="true" level="info"/>
     <logger name="io.lettuce" additivity="true" level="info"/>
     <logger name="io.netty" additivity="true" level="info"/>
-    <logger name="org.redisson" additivity="true" level="info"/>
+    <logger name="org.redisson" additivity="true" level="warn"/>
     <logger name="com.xxl.job" additivity="true" level="info"/>
     <logger name="com.zaxxer.hikari" additivity="true" level="info"/>
+    <logger name="com.baomidou.mybatisplus" level="info"/>
+    <logger name="org.apache.ibatis" level="info"/>
+    <logger name="org.mybatis" level="info"/>
 
-    <!--
-    自信关闭
-    -->
-    <logger name="org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker"
+    <logger
+            name="org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker"
             additivity="true" level="error"/>
 
     <root level="debug">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </root>
 
-</configuration>
+</included>
