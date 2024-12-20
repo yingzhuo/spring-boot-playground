@@ -103,16 +103,15 @@ jar {
 }
 
 springBoot {
-    mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
     buildInfo()
 }
 
 bootJar {
-    version = "$rootProject.version"
+    // launchScript()
 
     manifest {
-        attributes(['Author'      : '应卓',
-                    'Author-Email': 'yingzhor@gmail.com'])
+        attributes(['Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher',
+                    'Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot'])
     }
 
     includeTools = false
