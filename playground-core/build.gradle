@@ -1,10 +1,5 @@
-import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
-
 plugins {
-    id 'application'
     alias(libs.plugins.spring.boot)
-    alias(libs.plugins.git.props)
-    alias(libs.plugins.docker.building)
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -69,49 +64,22 @@ dependencies {
     compileOnly(libs.findbugs)
 }
 
-def entryClassName = 'com.github.yingzhuo.playground.ApplicationBoot'
-
-application {
-    mainClass = entryClassName
-
-    bootDistTar {
-        enabled = false
-    }
-    distTar {
-        enabled = false
-    }
-    distZip {
-        enabled = false
-    }
-}
-
-gitProperties {
-    dateFormat = "yyyy-MM-dd'T'HH:mmZ"
-    dateFormatTimeZone = 'Asia/Shanghai'
-    keys = [
-            'git.branch',
-            'git.commit.id',
-            'git.commit.id.abbrev',
-            'git.commit.id.describe',
-            'git.commit.time',
-            'git.commit.user.email',
-            'git.commit.user.name',
-            'git.dirty'
-    ]
-}
-
 jar {
     enabled = false
 }
 
 springBoot {
-    buildInfo()
+    buildInfo {
+        enabled = false
+    }
 }
 
 bootJar {
     manifest {
-        attributes(['Start-Class': entryClassName])
+        attributes(['Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot'])
     }
+
+    archiveFileName = "playground-${rootProject.version}.${archiveExtension.get()}"
 
     includeTools = false
 
@@ -119,30 +87,16 @@ bootJar {
         enabled = false
     }
 
-    excludes = [
-            '**/.DS_Store',
-            '**/.gitkeep'
-    ]
+    excludes = ['**/.DS_Store',
+                '**/.gitkeep',
+                '**/junit-*.jar',
+                '**/mockito-*.jar',
+                '**/spring-test-*.jar',
+                '**/spring-boot-test-*.jar',
+                '**/spring-security-test-*.jar']
+
 }
 
 test {
     useJUnitPlatform()
-}
-
-task dockerCopyDockerfile(group: 'docker', dependsOn: 'build', type: Copy) {
-    from('src/main/docker') {
-        include '**/*'
-    }
-    from('build/libs') {
-        include '**/*.jar'
-    }
-    exclude '**/.gitkeep'
-    into 'build/docker-context'
-    includeEmptyDirs = false
-}
-
-task dockerBuildImage(group: 'docker', dependsOn: 'dockerCopyDockerfile', type: DockerBuildImage) {
-    inputDir = file('build/docker-context')
-    images.add('yingzhuo/spring-boot-playground:latest')
-    images.add("yingzhuo/spring-boot-playground:$rootProject.version")
 }

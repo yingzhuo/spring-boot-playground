@@ -5,7 +5,6 @@ usage:
 	@echo "clean                : 清理项目"
 	@echo "compile              : 编译项目"
 	@echo "build                : 构建项目"
-	@echo "docker               : 构建Docker镜像"
 	@echo "github               : 推送文件到Github"
 	@echo "========================================================================================="
 
@@ -23,13 +22,10 @@ compile:
 build:
 	@gradlew build
 
-docker:
-	@gradlew dockerBuildImage
-
 github: clean
 	@git status
 	@git add .
 	@git commit -m "$(shell /bin/date "+%F %T")"
 	@git push
 
-.PHONY: usage wrapper clean compile build docker github
+.PHONY: usage wrapper clean compile build github

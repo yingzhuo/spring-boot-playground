@@ -41,5 +41,3 @@ mybatis = ['mybatis', 'mybatis-plus']
 
 [plugins]
 spring-boot = { id = 'org.springframework.boot', version.ref = 'spring-boot' }
-git-props = { id = 'com.gorylenko.gradle-git-properties', version = '2.4.2' }
-docker-building = { id = 'com.bmuschko.docker-remote-api', version = '9.4.0' }

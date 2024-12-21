@@ -1,50 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- ============== -->
+<!-- @formatter:off -->
+<!-- ============== -->
 <included>
 
-    <!--
-    logger 配置
-    -->
-    <logger name="spring.turbo" additivity="true" level="debug"/>
-    <logger name="org.jboss.logging" additivity="true" level="info"/>
-    <logger name="org.hibernate.validator" additivity="true" level="info"/>
-    <logger name="org.hibernate.validator.internal.util.Version" additivity="true" level="warn"/>
-    <logger name="io.micrometer" additivity="true" level="info"/>
-    <logger name="org.springframework" additivity="true" level="info"/>
-    <logger name="org.springframework.boot.context.ApplicationPidFileWriter" additivity="true"
-            level="off"/>
-    <logger name="org.springframework.security" additivity="true" level="debug"/>
-    <logger name="org.springframework.security.config.annotation.web.builders.WebSecurity"
-            additivity="true"
-            level="error"/>
-    <logger name="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl"
-            additivity="true"
-            level="info"/>
-    <logger name="_org.springframework.web.servlet.HandlerMapping.Mappings"
-            additivity="true"
-            level="info"/>
-    <logger name="org.hibernate" additivity="true" level="info"/>
-    <logger name="org.hibernate.SQL" additivity="true" level="info"/>
-    <logger name="org.hibernate.orm.jdbc.bind" additivity="true" level="info"/>
-    <logger name="org.hibernate.orm.deprecation" additivity="true" level="error"/>
-    <logger name="org.apache.hc" additivity="true" level="info"/>
-    <logger name="com.jayway.jsonpath" additivity="true" level="info"/>
-    <logger name="io.github.resilience4j" additivity="true" level="debug"/>
-    <logger name="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition"
-            additivity="true" level="info"/>
-    <logger name="io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition"
-            additivity="true" level="info"/>
-    <logger name="io.lettuce" additivity="true" level="info"/>
-    <logger name="io.netty" additivity="true" level="info"/>
-    <logger name="org.redisson" additivity="true" level="warn"/>
-    <logger name="com.xxl.job" additivity="true" level="info"/>
-    <logger name="com.zaxxer.hikari" additivity="true" level="info"/>
+    <logger name="spring.turbo" level="debug"/>
+
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.springframework.boot.context.ApplicationPidFileWriter" level="off"/>
+    <logger name="org.springframework.security" level="info"/>
+    <logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" level="info"/>
+
+    <!-- resilience4j -->
+    <logger name="io.github.resilience4j" level="debug"/>
+    <logger name="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition" level="info"/>
+    <logger name="io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition" level="info"/>
+
+    <!-- redis -->
+    <logger name="io.lettuce" level="info"/>
+    <logger name="org.redisson" level="warn"/>
+
+    <!-- net tools -->
+    <logger name="io.netty" level="info"/>
+
+    <logger name="com.zaxxer.hikari" level="info"/>
+
+    <!-- mybatis -->
     <logger name="com.baomidou.mybatisplus" level="info"/>
     <logger name="org.apache.ibatis" level="info"/>
     <logger name="org.mybatis" level="info"/>
 
-    <logger
-            name="org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker"
-            additivity="true" level="error"/>
+    <!-- hibernate-validator -->
+    <logger name="org.jboss.logging" level="info"/>
+    <logger name="org.hibernate.validator" level="info"/>
+    <logger name="org.hibernate.validator.internal.util.Version" level="warn"/>
 
     <root level="debug">
         <appender-ref ref="STDOUT"/>
@@ -52,3 +41,6 @@
     </root>
 
 </included>
+<!-- ============== -->
+<!-- @formatter:on -->
+        <!-- ============== -->
