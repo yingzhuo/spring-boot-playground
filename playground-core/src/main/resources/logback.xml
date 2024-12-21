@@ -21,6 +21,7 @@
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5level %logger{72}[%L] - %msg%n</pattern>
         </encoder>
         <file>${LOG_DIR}/${APP_NAME}.log</file>
+        <append>true</append>
         <rollingPolicy class="SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>
                 ${LOG_DIR}/${APP_NAME}.%d{yyyy-MM-dd-mm}.%i.log.zip
@@ -28,6 +29,7 @@
             <maxFileSize>32MB</maxFileSize>
             <maxHistory>60</maxHistory>
             <totalSizeCap>128MB</totalSizeCap>
+            <cleanHistoryOnStart>false</cleanHistoryOnStart>
         </rollingPolicy>
     </appender>
 

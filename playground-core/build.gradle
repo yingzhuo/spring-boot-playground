@@ -109,8 +109,6 @@ springBoot {
 }
 
 bootJar {
-    // launchScript()
-
     manifest {
         attributes(['Start-Class': entryClassName])
     }
@@ -121,7 +119,10 @@ bootJar {
         enabled = false
     }
 
-    excludes = ['**/.DS_Store']
+    excludes = [
+            '**/.DS_Store',
+            '**/.gitkeep'
+    ]
 }
 
 test {

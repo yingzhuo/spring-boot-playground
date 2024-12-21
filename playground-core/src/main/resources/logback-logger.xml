@@ -19,6 +19,9 @@
     <logger name="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl"
             additivity="true"
             level="info"/>
+    <logger name="_org.springframework.web.servlet.HandlerMapping.Mappings"
+            additivity="true"
+            level="info"/>
     <logger name="org.hibernate" additivity="true" level="info"/>
     <logger name="org.hibernate.SQL" additivity="true" level="info"/>
     <logger name="org.hibernate.orm.jdbc.bind" additivity="true" level="info"/>
