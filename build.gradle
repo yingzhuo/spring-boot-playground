@@ -6,9 +6,12 @@ description 'Demo of SpringBoot Application & Gradle'
 
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号
 // 参考: https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
-ext['logback.version'] = '1.5.13'
+// ext['logback.version'] = '1.5.13'
 
 allprojects {
+}
+
+subprojects {
 
     apply plugin: 'java'
     apply plugin: 'java-library'
@@ -31,7 +34,6 @@ allprojects {
         maven { name 'Spring(Milestone)'; url 'https://repo.spring.io/milestone' }
         maven { name 'Spring(Snapshot)'; url 'https://repo.spring.io/snapshot' }
         mavenCentral()
-        google()
     }
 
     buildscript {
@@ -41,7 +43,6 @@ allprojects {
             maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
             maven { name '阿里云(Plugin)'; url 'https://maven.aliyun.com/repository/gradle-plugin' }
             mavenCentral()
-            google()
         }
     }
 
@@ -53,7 +54,5 @@ allprojects {
             }
         }
     }
-}
 
-subprojects {
 }

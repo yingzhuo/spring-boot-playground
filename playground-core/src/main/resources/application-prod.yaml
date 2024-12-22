@@ -1,0 +1,53 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# 核心配置
+# ----------------------------------------------------------------------------------------------------------------------
+spring:
+  config:
+    import: [ ]
+  datasource:
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    username: "root"
+    password: "root"
+    url: "jdbc:mysql://192.168.31.165:3306/SpringBootPlayground?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai"
+  data:
+    redis:
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 8
+          max-wait: -1ms
+          max-idle: 8
+          min-idle: 0
+        cluster:
+          refresh:
+            adaptive: true # 在集群模式下必须要自动刷新拓扑
+            period: 2s
+      database: 0
+      password: "redis"
+      cluster:
+        nodes:
+          - "192.168.31.165:6379"
+          - "192.168.31.165:6380"
+          - "192.168.31.166:6379"
+          - "192.168.31.166:6380"
+          - "192.168.31.167:6379"
+          - "192.168.31.167:6380"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# 分布式锁配置
+# ----------------------------------------------------------------------------------------------------------------------
+red-lock:
+  enabled: true
+  allow-downgrade-to-non-multi-lock: false
+  nodes:
+    - address: "redis://192.168.31.165:7000"
+      password: "redis"
+      database: 0
+    - address: "redis://192.168.31.166:7000"
+      password: "redis"
+      database: 0
+    - address: "redis://192.168.31.167:7000"
+      password: "redis"
+      database: 0
+  aspect-advice:
+    enabled: true
