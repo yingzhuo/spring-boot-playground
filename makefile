@@ -10,7 +10,7 @@ usage:
 
 wrapper:
 	@gradle wrapper \
-		--gradle-distribution-url 'https://mirrors.cloud.tencent.com/gradle/gradle-8.11.1-bin.zip'
+		--gradle-distribution-url 'https://mirrors.cloud.tencent.com/gradle/gradle-8.12-bin.zip'
 
 clean:
 	@gradlew clean

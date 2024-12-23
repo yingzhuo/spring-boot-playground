@@ -1,12 +1,12 @@
 import org.apache.tools.ant.filters.Native2AsciiFilter
 
-group 'com.github.yingzhuo'
-version '0.3.0'
-description 'Demo of SpringBoot Application & Gradle'
+group = 'com.github.yingzhuo'
+version = '0.3.1'
+description = 'Demo of SpringBoot Application & Gradle'
 
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号
 // 参考: https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
-// ext['logback.version'] = '1.5.13'
+ext['logback.version'] = '1.5.13'
 
 allprojects {
 }
@@ -17,22 +17,22 @@ subprojects {
     apply plugin: 'java-library'
 
     java {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-        compileJava.options.encoding 'UTF-8'
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        compileJava.options.encoding = 'UTF-8'
         compileJava.options.debugOptions.debugLevel = "source,lines,vars"
-        compileTestJava.options.encoding 'UTF-8'
+        compileTestJava.options.encoding = 'UTF-8'
         compileTestJava.options.debugOptions.debugLevel = "source,lines,vars"
         // withSourcesJar()
     }
 
     repositories {
         mavenLocal()
-        maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
-        maven { name '阿里云(Spring)'; url 'https://maven.aliyun.com/repository/spring/' }
-        maven { name 'Spring(GA)'; url 'https://repo.spring.io/release' }
-        maven { name 'Spring(Milestone)'; url 'https://repo.spring.io/milestone' }
-        maven { name 'Spring(Snapshot)'; url 'https://repo.spring.io/snapshot' }
+        maven { name = '阿里云'; url = 'https://maven.aliyun.com/repository/public/' }
+        maven { name = '阿里云(Spring)'; url = 'https://maven.aliyun.com/repository/spring/' }
+        maven { name = 'Spring(GA)'; url = 'https://repo.spring.io/release' }
+        maven { name = 'Spring(Milestone)'; url = 'https://repo.spring.io/milestone' }
+        maven { name = 'Spring(Snapshot)'; url = 'https://repo.spring.io/snapshot' }
         mavenCentral()
     }
 
@@ -40,8 +40,8 @@ subprojects {
         repositories {
             mavenLocal()
             gradlePluginPortal()
-            maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
-            maven { name '阿里云(Plugin)'; url 'https://maven.aliyun.com/repository/gradle-plugin' }
+            maven { name = '阿里云'; url = 'https://maven.aliyun.com/repository/public/' }
+            maven { name = '阿里云(Plugin)'; url = 'https://maven.aliyun.com/repository/gradle-plugin' }
             mavenCentral()
         }
     }

@@ -58,9 +58,14 @@ dependencies {
     annotationProcessor(libs.mapstruct)
 
     // 通用工具
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    implementation 'org.apache.commons:commons-text:1.13.0'
+    implementation 'commons-codec:commons-codec:1.17.1'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'commons-io:commons-io:2.18.0'
     implementation 'org.apache.commons:commons-pool2'
     implementation('com.google.guava:guava:33.4.0-jre') {
-        transitive(false)
+        transitive = false
     }
 
     // findbugs
@@ -79,10 +84,8 @@ springBoot {
 
 bootJar {
     manifest {
-        attributes(['Start-Class' : 'com.github.yingzhuo.playground.ApplicationBoot',
-                    'Main-Class'  : 'org.springframework.boot.loader.launch.PropertiesLauncher',
-                    'Author'      : '应卓',
-                    'Author-Email': 'yingzhor@gmail.com',])
+        attributes(['Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot',
+                    'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher'])
     }
 
     archiveFileName = "playground-${rootProject.version}.${archiveExtension.get()}"
@@ -93,18 +96,22 @@ bootJar {
         enabled = false
     }
 
-    def excludePatterns = ['**/.DS_Store',
-                           '**/.gitkeep',
-                           '**/junit-*.jar',
-                           '**/mockito-*.jar',
-                           '**/spring-test-*.jar',
-                           '**/spring-boot-test-*.jar',
-                           '**/spring-security-test-*.jar',
-                           '**/log4j-api-*.jar',
-                           '**/log4j-to-slf4j-*.jar',]
+    def excludePatterns = [
+            '**/.DS_Store',
+            '**/.gitkeep',
+            '**/junit-*.jar',
+            '**/mockito-*.jar',
+            '**/spring-test-*.jar',
+            '**/spring-boot-test-*.jar',
+            '**/spring-security-test-*.jar',
+            '**/log4j-api-*.jar',
+            '**/log4j-to-slf4j-*.jar']
+
     if (project.hasProperty('build-for-prod')) {
-        excludePatterns += ['**/logback-spring.xml',
-                            '**/application-dev.y?ml',]
+        excludePatterns += [
+                '**/logback-spring.xml',
+                '**/application-dev.y?ml'
+        ]
     }
 
     excludes = excludePatterns
