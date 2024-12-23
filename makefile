@@ -13,8 +13,10 @@ wrapper:
 		--gradle-distribution-url 'https://mirrors.cloud.tencent.com/gradle/gradle-8.12-bin.zip'
 
 clean:
-	@gradlew clean
+	@find $(CURDIR) -name '.DS_Store' -delete
 	@rm -rf $(CURDIR)/logs/*.log*
+	@rm -rf $(CURDIR)/build/
+	@gradlew clean -q
 
 compile:
 	@gradlew classes
