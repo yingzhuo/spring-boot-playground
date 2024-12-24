@@ -17,7 +17,7 @@ import spring.turbo.module.jackson.view.BaseView;
 import spring.turbo.module.jwt.JwtData;
 import spring.turbo.module.jwt.JwtService;
 import spring.turbo.module.security.authentication.UserDetailsFinder;
-import spring.turbo.util.UUIDUtils;
+import spring.turbo.util.UUIDGenerators;
 
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class SecurityController {
                 JwtData.newInstance()
                         .addPayload("username", loginForm.getUsername())
                         .addPayload("roles", roles)
-                        .addPayloadJwtId(UUIDUtils::uuid32)
+                        .addPayloadJwtId(UUIDGenerators::timeBased32)
                         .addPayloadIssuer(jwtProperties.getIssuer())
                         .addPayloadExpiresAtFuture(jwtProperties.getTtl())
         );

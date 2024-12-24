@@ -1,7 +1,7 @@
 [versions]
 bouncy-castle = '1.79'
 spring-boot = '3.4.1'
-spring-turbo = '3.4.1'
+spring-turbo = '3.4.1-1-SNAPSHOT'
 redisson = '3.40.2'
 
 [libraries]
