@@ -1,5 +1,6 @@
-package com.github.yingzhuo.playground.service;
+package com.github.yingzhuo.playground.service.impl;
 
+import com.github.yingzhuo.playground.service.IdGenService;
 import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

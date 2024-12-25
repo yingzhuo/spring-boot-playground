@@ -1,6 +1,7 @@
-package com.github.yingzhuo.playground.mapper;
+package com.github.yingzhuo.playground.mapper.impl;
 
 import com.github.yingzhuo.playground.entity.User;
+import com.github.yingzhuo.playground.mapper.UserMapperExt;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
