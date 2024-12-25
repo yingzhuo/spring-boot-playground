@@ -46,6 +46,10 @@ dependencies {
     implementation(libs.p6spy.spring.boot)
     implementation(libs.bundles.mybatis)
 
+    // flywaydb
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+
     // redisson / redlock
     implementation(libs.redisson.redlock.spring.boot)
 

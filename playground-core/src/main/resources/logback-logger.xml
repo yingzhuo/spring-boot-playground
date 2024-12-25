@@ -21,12 +21,16 @@
     <!-- net tools -->
     <logger name="io.netty" level="info"/>
 
+    <!-- 连接池 -->
     <logger name="com.zaxxer.hikari" level="info"/>
 
     <!-- mybatis -->
     <logger name="com.baomidou.mybatisplus" level="info"/>
     <logger name="org.apache.ibatis" level="info"/>
     <logger name="org.mybatis" level="info"/>
+
+    <!-- flywaydb -->
+    <logger name="org.flywaydb" level="info"/>
 
     <!-- hibernate-validator -->
     <logger name="org.jboss.logging" level="info"/>
