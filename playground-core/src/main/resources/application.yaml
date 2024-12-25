@@ -67,8 +67,29 @@ spring:
   pid:
     file: "/var/run/${spring.application.name}/pid"
     fail-on-write-error: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: "HikariCP"
+      minimum-idle: 10
+      maximum-pool-size: 30
+      auto-commit: true
+      idle-timeout: 30000
+      max-lifetime: 900000
+      connection-timeout: 10000
+      connection-test-query: "SELECT 0"
+      validation-timeout: 1000
   flyway:
-    enabled: false
+    enabled: true
+    driver-class-name: "${spring.datasource.driver-class-name}"
+    url: "${spring.datasource.url}"
+    user: "${spring.datasource.username}"
+    password: "${spring.datasource.password}"
+    locations:
+      - "classpath:flyway/"
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    baseline-version: 0
   security:
     filter:
       order: -200
