@@ -80,16 +80,7 @@ spring:
       connection-test-query: "SELECT 0"
       validation-timeout: 1000
   flyway:
-    enabled: true
-    driver-class-name: "${spring.datasource.driver-class-name}"
-    url: "${spring.datasource.url}"
-    user: "${spring.datasource.username}"
-    password: "${spring.datasource.password}"
-    locations:
-      - "classpath:flyway/"
-    baseline-on-migrate: true
-    validate-on-migrate: true
-    baseline-version: 0
+    enabled: false
   security:
     filter:
       order: -200

@@ -1,0 +1,84 @@
+plugins {
+    alias(libs.plugins.spring.boot)
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+
+    // spring-boot and spring
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    compileOnly 'org.springframework:spring-context-indexer'
+    annotationProcessor 'org.springframework:spring-context-indexer'
+
+    // DB相关
+    implementation(libs.mysql)
+
+    // flywaydb
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // findbugs
+    compileOnly(libs.findbugs)
+}
+
+jar {
+    enabled = false
+}
+
+springBoot {
+    buildInfo {
+        enabled = false
+    }
+}
+
+bootJar {
+    manifest {
+        attributes(['Start-Class': 'com.github.yingzhuo.playground.flywaydb.ApplicationFlywayDB',
+                    'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher'])
+    }
+
+    archiveFileName = "playground-flywaydb-${rootProject.version}.${archiveExtension.get()}"
+
+    includeTools = false
+
+    layered {
+        enabled = false
+    }
+
+    def excludePatterns = [
+            '**/.DS_Store',
+            '**/.gitkeep',
+            '**/junit-*.jar',
+            '**/mockito-*.jar',
+            '**/opentest4j-*.jar',
+            '**/spring-test-*.jar',
+            '**/spring-boot-test-*.jar',
+            '**/spring-boot-configuration-processor-*.jar',
+            '**/spring-security-test-*.jar',
+            '**/log4j-api-*.jar',
+            '**/log4j-to-slf4j-*.jar'
+    ]
+
+    if (project.hasProperty('build-for-prod')) {
+        excludePatterns += [
+                '**/flyway/',
+                '**/application-dev.y?ml'
+        ]
+    }
+
+    excludes = excludePatterns
+
+}
+
+test {
+    useJUnitPlatform()
+}
