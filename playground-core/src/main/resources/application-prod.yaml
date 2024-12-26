@@ -6,9 +6,9 @@ spring:
     import: [ ]
   datasource:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
+    url: "jdbc:mysql://192.168.31.165:3306/SpringBootPlayground?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai"
     username: "root"
     password: "root"
-    url: "jdbc:mysql://192.168.31.165:3306/SpringBootPlayground?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai"
   data:
     redis:
       lettuce:
