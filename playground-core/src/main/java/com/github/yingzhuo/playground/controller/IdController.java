@@ -19,7 +19,7 @@ public class IdController {
     @GetMapping("/id")
     @JsonView(BaseView.class)
     public Object id() {
-        var data = Map.of("id", idGenService.nextId());
+        var data = Map.<String, Object>of("id", idGenService.nextId());
         return ApiResult.of(data);
     }
 

@@ -13,8 +13,7 @@ import org.springframework.context.annotation.ImportResource;
 public class ApplicationBoot {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ApplicationBoot.class)
-                .run(args);
+        new SpringApplicationBuilder(ApplicationBoot.class).run(args);
     }
 
 }

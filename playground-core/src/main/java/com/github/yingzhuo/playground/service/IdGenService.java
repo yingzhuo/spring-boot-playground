@@ -5,9 +5,8 @@ package com.github.yingzhuo.playground.service;
  *
  * @author 应卓
  */
-@FunctionalInterface
 public interface IdGenService {
 
-    public Long nextId();
+    public String nextId();
 
 }

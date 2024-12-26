@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @author 应卓
@@ -17,22 +18,22 @@ import java.io.Serializable;
 @Setter
 @ToString
 @NoArgsConstructor
-@TableName("t_user")
-public class User implements Serializable {
+@TableName("t_user_address")
+public class UserAddress implements Serializable {
 
-    @TableId
-    private String id;
+    @TableId("id")
+    private Long id;
 
-    @TableField("username")
-    private String username;
+    @TableField("zip_code")
+    private String zipCode;
 
-    @TableField("password")
-    private String password;
+    @TableField("detail")
+    private String detail;
 
-    @TableField("authorities")
-    private String authorities;
+    @TableField("user_id")
+    private String userId;
 
-    @TableField("enabled")
-    private Boolean enabled;
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
 }

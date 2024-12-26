@@ -1,21 +1,17 @@
 package com.github.yingzhuo.playground.service.impl;
 
 import com.github.yingzhuo.playground.service.IdGenService;
-import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import spring.turbo.util.id.SnowflakeGenerator;
+import spring.turbo.util.UUIDGenerators;
 
 @Service
 @RequiredArgsConstructor
 public class IdGenServiceImpl implements IdGenService {
 
-    private final SnowflakeGenerator snowflakeGenerator;
-
     @Override
-    @Observed(name = "idGenService")
-    public Long nextId() {
-        return snowflakeGenerator.nextId();
+    public String nextId() {
+        return UUIDGenerators.timeBased32();
     }
 
 }
