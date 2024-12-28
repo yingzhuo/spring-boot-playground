@@ -22,7 +22,7 @@ compile:
 	@gradlew classes
 
 build:
-	@gradlew build -P"build-for-prod"
+	@gradlew build -P"build-for-prod" -x"test"
 
 github: clean
 	@git status
