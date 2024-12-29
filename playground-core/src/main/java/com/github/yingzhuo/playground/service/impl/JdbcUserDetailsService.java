@@ -1,6 +1,7 @@
-package com.github.yingzhuo.playground.security;
+package com.github.yingzhuo.playground.service.impl;
 
 import com.github.yingzhuo.playground.mapper.UserMapper;
+import com.github.yingzhuo.playground.security.UserWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

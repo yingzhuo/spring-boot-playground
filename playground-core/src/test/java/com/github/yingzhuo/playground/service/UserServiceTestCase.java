@@ -14,7 +14,7 @@ public class UserServiceTestCase {
     @Test
     @DisplayName("测试修改密码 - 1")
     public void test1() {
-        userService.resetPassword("0194012571d540289f74940125710000", "123456");
+        userService.resetPassword("0194012571d540289f74940125710000", "yingzhuo");
     }
 
 }

@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
-record UserWrapper(User user) implements UserDetails {
+public record UserWrapper(User user) implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
