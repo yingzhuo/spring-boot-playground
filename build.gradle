@@ -1,7 +1,7 @@
 import org.apache.tools.ant.filters.Native2AsciiFilter
 
 group = 'com.github.yingzhuo'
-version = '0.3.1'
+version = '0.3.2'
 description = 'Demo of SpringBoot Application & Gradle'
 
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号

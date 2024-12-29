@@ -2,7 +2,6 @@
 bouncy-castle = '1.79'
 spring-boot = '3.4.1'
 spring-turbo = '3.4.1-1'
-redisson = '3.40.2'
 
 [libraries]
 findbugs = 'com.github.spotbugs:spotbugs-annotations:4.8.6'
@@ -25,8 +24,7 @@ spring-turbo-jwt = { module = 'com.github.yingzhuo:spring-turbo-module-jwt', ver
 spring-turbo-misc = { module = 'com.github.yingzhuo:spring-turbo-module-misc', version.ref = 'spring-turbo' }
 spring-turbo-redis = { module = 'com.github.yingzhuo:spring-turbo-module-redis', version.ref = 'spring-turbo' }
 
-redisson-spring-boot = { module = 'org.redisson:redisson-spring-boot-starter', version.ref = 'redisson' }
-redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.2'
+redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.3'
 
 xxljob-core = "com.xuxueli:xxl-job-core:2.4.2"
 

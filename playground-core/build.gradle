@@ -48,6 +48,9 @@ dependencies {
     // redisson / redlock
     implementation(libs.redisson.redlock.spring.boot)
 
+    // bouncy-castle
+    implementation(libs.bundles.bouncy.castle)
+
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -84,7 +87,10 @@ springBoot {
 bootJar {
     manifest {
         attributes(['Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot',
-                    'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher'])
+                    'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher',
+                    'App-Name'   : 'playground-core',
+                    'App-Version': "${rootProject.version}",
+                    'App-Author' : '应卓',])
     }
 
     archiveFileName = "playground-${rootProject.version}.${archiveExtension.get()}"
