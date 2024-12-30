@@ -24,7 +24,7 @@ spring-turbo-jwt = { module = 'com.github.yingzhuo:spring-turbo-module-jwt', ver
 spring-turbo-misc = { module = 'com.github.yingzhuo:spring-turbo-module-misc', version.ref = 'spring-turbo' }
 spring-turbo-redis = { module = 'com.github.yingzhuo:spring-turbo-module-redis', version.ref = 'spring-turbo' }
 
-redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.3'
+redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.4'
 
 xxljob-core = "com.xuxueli:xxl-job-core:2.4.2"
 

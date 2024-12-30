@@ -70,27 +70,26 @@ dependencies {
         transitive = false
     }
 
-    // findbugs
-    compileOnly(libs.findbugs)
 }
 
 jar {
-    enabled = false
+    enabled = true
 }
 
 springBoot {
     buildInfo {
         enabled = false
     }
+
+    mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
 }
 
 bootJar {
     manifest {
-        attributes(['Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot',
-                    'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher',
-                    'App-Name'   : 'playground-core',
-                    'App-Version': "${rootProject.version}",
-                    'App-Author' : '应卓',])
+        attributes([
+                'Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot',
+                'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher'
+        ])
     }
 
     archiveFileName = "playground-${rootProject.version}.${archiveExtension.get()}"
@@ -98,7 +97,28 @@ bootJar {
     includeTools = false
 
     layered {
-        enabled = false
+        enabled = true
+
+        application {
+            intoLayer("spring-boot-loader") {
+                include "org/springframework/boot/loader/**"
+            }
+            intoLayer("application")
+        }
+
+        dependencies {
+            intoLayer("application") {
+                includeProjectDependencies()
+            }
+
+            intoLayer("snapshot-dependencies") {
+                include "*:*:*SNAPSHOT"
+            }
+
+            intoLayer("dependencies")
+        }
+
+        layerOrder = ["dependencies", "spring-boot-loader", "snapshot-dependencies", "application"]
     }
 
     def excludePatterns = [

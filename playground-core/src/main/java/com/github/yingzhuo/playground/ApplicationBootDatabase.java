@@ -12,12 +12,14 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan(value = "com.github.yingzhuo.playground.mapper")
+@MapperScan(basePackages = {"com.github.yingzhuo.playground.mapper"})
 @RequiredArgsConstructor
 public class ApplicationBootDatabase {
 
+    private final DataSource dataSource;
+
     @Bean
-    public TransactionManager transactionManager(DataSource dataSource) {
+    public TransactionManager transactionManager() {
         return new JdbcTransactionManager(dataSource);
     }
 
