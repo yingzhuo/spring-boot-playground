@@ -10,6 +10,7 @@ import org.springframework.lang.Nullable;
 public interface UserMapper extends BaseMapper<User> {
 
     @Nullable
+    @Deprecated
     public User findByIdForUpdate(@Param("id") String id);
 
     @Nullable

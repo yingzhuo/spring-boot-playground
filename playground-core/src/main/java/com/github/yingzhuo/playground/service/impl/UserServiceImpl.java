@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         log.debug("userId = {}", userId);
         log.debug("newPassword = {}", newPassword);
 
-        var user = userMapper.findByIdForUpdate(userId);
+        var user = userMapper.selectById(userId);
         if (user == null) {
             return;
         }
