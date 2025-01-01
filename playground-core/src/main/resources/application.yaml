@@ -168,9 +168,7 @@ mybatis-plus:
       table-prefix: "t_"
   mapperLocations:
     - "classpath*:/mybatis-mapper/**/*.xml"
-  type-aliases-package: |
-    com.github.yingzhuo.playground.entity
-    com.github.yingzhuo.playground.dto
+  type-aliases-package: com.github.yingzhuo.playground.entity,com.github.yingzhuo.playground.dto
 
 # ----------------------------------------------------------------------------------------------------------------------
 # SQL日志
