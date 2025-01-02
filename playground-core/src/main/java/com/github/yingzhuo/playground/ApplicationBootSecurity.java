@@ -110,6 +110,7 @@ public class ApplicationBootSecurity {
         // 权限管理
         http.authorizeHttpRequests(c ->
                 c.requestMatchers(HttpMethod.POST, "/security/login").permitAll()
+                        .requestMatchers(SwaggerConstants.SWAGGER_ANT_PATTERNS).permitAll()
                         .requestMatchers(HttpMethod.GET, "/favicon.ico").permitAll()
                         .requestMatchers(HttpMethod.GET, "/actuator", "/actuator/**").permitAll()
                         .anyRequest().hasAuthority("ROLE_USER")

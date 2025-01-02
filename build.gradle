@@ -1,7 +1,7 @@
 import org.apache.tools.ant.filters.Native2AsciiFilter
 
 group = 'com.github.yingzhuo'
-version = '0.3.2'
+version = '0.3.3'
 description = 'Demo of SpringBoot Application & Gradle'
 
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号
@@ -20,9 +20,9 @@ subprojects {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
         compileJava.options.encoding = 'UTF-8'
-        compileJava.options.debugOptions.debugLevel = "source,lines,vars"
+//        compileJava.options.debugOptions.debugLevel = "source,lines,vars"
         compileTestJava.options.encoding = 'UTF-8'
-        compileTestJava.options.debugOptions.debugLevel = "source,lines,vars"
+//        compileTestJava.options.debugOptions.debugLevel = "source,lines,vars"
         // withSourcesJar()
     }
 

@@ -13,7 +13,9 @@ spring:
   profiles:
     active:
       - "dev"
-    include: [ "ssl" ]
+      - "swagger"
+    include:
+      - "ssl"
   config:
     import: [ ]
   autoconfigure:
@@ -179,3 +181,10 @@ decorator:
       enable-logging: true
       multiline: true
       logging: slf4j
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Swagger
+# ----------------------------------------------------------------------------------------------------------------------
+springdoc:
+  swagger-ui:
+    enabled: false

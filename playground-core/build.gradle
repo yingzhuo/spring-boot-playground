@@ -59,6 +59,9 @@ dependencies {
     implementation(libs.mapstruct)
     annotationProcessor(libs.mapstruct)
 
+    // swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+
     // 通用工具
     implementation 'org.apache.commons:commons-lang3:3.17.0'
     implementation 'org.apache.commons:commons-text:1.13.0'
@@ -73,7 +76,7 @@ dependencies {
 }
 
 jar {
-    enabled = true
+    enabled = false
 }
 
 springBoot {
