@@ -77,7 +77,16 @@ jar {
 
 springBoot {
     buildInfo {
-        enabled = false
+        enabled = true
+        excludes = ['group', 'artifact']
+        properties {
+            additional = ['name'        : 'playground',
+                          'version'     : "${rootProject.version}",
+                          'time'        : "${rootProject.buildTimestamp}",
+                          'tool-type'   : 'gradle',
+                          'tool-version': gradle.gradleVersion
+            ]
+        }
     }
 
     mainClass = 'com.github.yingzhuo.playground.ApplicationBoot'
