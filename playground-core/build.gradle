@@ -31,7 +31,6 @@ dependencies {
 
     // spring-turbo
     implementation(libs.spring.turbo)
-    implementation(libs.spring.turbo.conf)
     implementation(libs.spring.turbo.jackson)
     implementation(libs.spring.turbo.webmvc)
     implementation(libs.spring.turbo.webcli)
@@ -47,9 +46,6 @@ dependencies {
 
     // redisson / redlock
     implementation(libs.redisson.redlock.spring.boot)
-
-    // bouncy-castle
-    implementation(libs.bundles.bouncy.castle)
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
@@ -89,9 +85,10 @@ springBoot {
 
 bootJar {
     manifest {
-        attributes([
-                'Start-Class': 'com.github.yingzhuo.playground.ApplicationBoot',
-                'Main-Class' : 'org.springframework.boot.loader.launch.PropertiesLauncher'
+        attributes(['Start-Class'           : 'com.github.yingzhuo.playground.ApplicationBoot',
+                    'Main-Class'            : 'org.springframework.boot.loader.launch.PropertiesLauncher',
+                    'Implementation-Version': "${rootProject.version}",
+                    'Implementation-Title'  : 'playground',
         ])
     }
 
