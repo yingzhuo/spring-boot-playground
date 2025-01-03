@@ -4,15 +4,15 @@ import com.github.yingzhuo.playground.entity.UserPasswordHistory;
 import com.github.yingzhuo.playground.mapper.UserMapper;
 import com.github.yingzhuo.playground.mapper.UserPasswordHistoryMapper;
 import com.github.yingzhuo.playground.service.UserService;
+import com.github.yingzhuo.playground.util.IDGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import spring.turbo.util.UUIDGenerators;
+import spring.turbo.util.DigestUtils;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final UserPasswordHistoryMapper userPasswordHistoryMapper;
+    private final IDGenerator idGenerator;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
         // 记录密码更新履历
         var his = new UserPasswordHistory();
-        his.setId(UUIDGenerators.timeBased32());
+        his.setId(idGenerator.generate());
         his.setUserId(userId);
         his.setHashedPassword(DigestUtils.md5Hex(newPassword));
         his.setCreateTime(LocalDateTime.now());
@@ -73,7 +74,7 @@ public class UserServiceImpl implements UserService {
             log.debug("待删除密码更新履历ID: {}", idSetToDelete);
             userPasswordHistoryMapper.deleteByIds(idSetToDelete);
         } else {
-            log.debug("密码更新履历没有达到上限{} (当前 = {})", USER_PWD_HISTORY_MAX, historyList.size());
+            log.debug("密码更新履历没有超过上限{} (当前 = {})", USER_PWD_HISTORY_MAX, historyList.size());
         }
     }
 
