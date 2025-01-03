@@ -1,7 +1,7 @@
 [versions]
 bouncy-castle = '1.79'
 spring-boot = '3.4.1'
-spring-turbo = '3.4.1-1'
+spring-turbo = '3.4.1-2'
 
 [libraries]
 findbugs = 'com.github.spotbugs:spotbugs-annotations:4.8.6'
