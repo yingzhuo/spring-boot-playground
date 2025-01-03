@@ -10,8 +10,11 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
+ * 用户
+ *
  * @author 应卓
  */
 @Getter
@@ -44,5 +47,8 @@ public class User implements Serializable {
 
     @TableField("enabled")
     private Boolean enabled;
+
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
 }

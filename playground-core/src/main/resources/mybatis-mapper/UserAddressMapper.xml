@@ -2,15 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.yingzhuo.playground.mapper.UserAddressMapper">
 
-    <resultMap id="base" type="UserAddress">
-        <id column="id" property="id"/>
-        <result column="zip_code" property="zipCode"/>
-        <result column="detail" property="detail"/>
-        <result column="user_id" property="userId"/>
-        <result column="create_time" property="createTime"/>
-    </resultMap>
-
-    <select id="findByUserId" parameterType="string" resultMap="base">
+    <select id="findByUserId" parameterType="string" resultType="UserAddress">
         <!-- @formatter:off -->
         <![CDATA[
         SELECT

@@ -12,8 +12,4 @@ public interface UserMapper extends BaseMapper<User> {
     @Nullable
     public User findByUsername(@Param("username") String username);
 
-    @Nullable
-    public User findByUsernameAndPassword(@Param("username") String username,
-                                          @Param("password") String password);
-
 }

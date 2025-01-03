@@ -12,6 +12,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
+ * 用户地址
+ *
  * @author 应卓
  */
 @Getter
@@ -22,7 +24,7 @@ import java.time.LocalDateTime;
 public class UserAddress implements Serializable {
 
     @TableId("id")
-    private Long id;
+    private String id;
 
     @TableField("zip_code")
     private String zipCode;
