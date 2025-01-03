@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * @author 应卓
@@ -28,6 +29,15 @@ public class User implements Serializable {
 
     @TableField("password")
     private String password;
+
+    @TableField("gender")
+    private Gender gender;
+
+    @TableField("dob")
+    private LocalDate dateOfBirth;
+
+    @TableField("email")
+    private String emailAddress;
 
     @TableField("authorities")
     private String authorities;

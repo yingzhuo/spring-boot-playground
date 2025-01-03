@@ -2,42 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.yingzhuo.playground.mapper.UserMapper">
 
-    <select id="findByUsername" parameterType="string" resultType="User">
-        <!-- @formatter:off -->
-        <![CDATA[
+    <sql id="selectBase">
         SELECT
-            id,
-            username,
-            password,
-            authorities,
-            enabled,
-            create_time AS 'createTime'
+        id,
+        username,
+        password,
+        authorities,
+        enabled,
+        email AS 'emailAddress',
+        dob AS 'dateOfBirth',
+        gender AS 'gender',
+        create_time AS 'createTime'
         FROM
-            t_user AS u
+        t_user AS u
+    </sql>
+
+    <select id="findByUsername" parameterType="string" resultType="User">
+        <include refid="selectBase"/>
         WHERE
-            u.username = #{username}
-        ]]>
-        <!-- @formatter:on -->
+        u.username = #{username}
     </select>
 
     <select id="findByUsernameAndPassword" parameterType="map" resultType="User">
-        <!-- @formatter:off -->
-        <![CDATA[
-        SELECT
-            id,
-            username,
-            password,
-            authorities,
-            enabled,
-            create_time AS 'createTime'
-        FROM
-            t_user AS u
+        <include refid="selectBase"/>
         WHERE
-            u.username = #{username}
+        u.username = #{username}
         AND
-            u.password = #{password}
-        ]]>
-        <!-- @formatter:on -->
+        u.password = #{password}
     </select>
 
 </mapper>
