@@ -69,18 +69,18 @@ spring:
   pid:
     file: "/var/run/${spring.application.name}/pid"
     fail-on-write-error: false
-  #  datasource:
-  #    type: com.zaxxer.hikari.HikariDataSource
-  #    hikari:
-  #      pool-name: "HikariCP"
-  #      minimum-idle: 10
-  #      maximum-pool-size: 30
-  #      auto-commit: true
-  #      idle-timeout: 30000
-  #      max-lifetime: 900000
-  #      connection-timeout: 10000
-  #      connection-test-query: "SELECT 0"
-  #      validation-timeout: 1000
+  #    datasource:
+  #      type: com.zaxxer.hikari.HikariDataSource
+  #      hikari:
+  #        pool-name: "HikariCP"
+  #        minimum-idle: 10
+  #        maximum-pool-size: 30
+  #        auto-commit: true
+  #        idle-timeout: 30000
+  #        max-lifetime: 900000
+  #        connection-timeout: 10000
+  #        connection-test-query: "SELECT 0"
+  #        validation-timeout: 1000
   flyway:
     enabled: false
   security:

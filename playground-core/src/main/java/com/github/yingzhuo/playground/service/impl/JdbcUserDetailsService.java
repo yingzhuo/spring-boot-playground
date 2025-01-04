@@ -1,7 +1,5 @@
 package com.github.yingzhuo.playground.service.impl;
 
-import com.github.yingzhuo.playground.include.jdbc.DataSourceNames;
-import com.github.yingzhuo.playground.include.jdbc.annotation.DataSourceSwitch;
 import com.github.yingzhuo.playground.mapper.UserMapper;
 import com.github.yingzhuo.playground.security.UserWrapper;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import spring.turbo.module.jdbc.ds.DataSourceSwitch;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class JdbcUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.SUPPORTS, readOnly = true)
-    @DataSourceSwitch(DataSourceNames.SLAVE)
+    @DataSourceSwitch("slave")
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userMapper.findByUsername(username);
 

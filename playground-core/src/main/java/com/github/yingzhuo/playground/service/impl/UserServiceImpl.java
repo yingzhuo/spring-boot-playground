@@ -1,8 +1,6 @@
 package com.github.yingzhuo.playground.service.impl;
 
 import com.github.yingzhuo.playground.entity.UserPasswordHistory;
-import com.github.yingzhuo.playground.include.jdbc.DataSourceNames;
-import com.github.yingzhuo.playground.include.jdbc.annotation.DataSourceSwitch;
 import com.github.yingzhuo.playground.mapper.UserMapper;
 import com.github.yingzhuo.playground.mapper.UserPasswordHistoryMapper;
 import com.github.yingzhuo.playground.service.UserService;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import spring.turbo.module.jdbc.ds.DataSourceSwitch;
 import spring.turbo.util.DigestUtils;
 
 import java.time.LocalDateTime;
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    @DataSourceSwitch(DataSourceNames.MASTER)
+    @DataSourceSwitch("master")
     public void resetPassword(String userId, String newPassword) {
         Assert.hasText(userId, () -> "userId is required");
         Assert.hasText(newPassword, "newPassword is required");

@@ -6,7 +6,7 @@ description = 'Demo of SpringBoot Application & Gradle'
 
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号
 // 参考: https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
-// ext['logback.version'] = '1.5.13'
+ext['logback.version'] = '1.5.13'
 
 ext {
     buildTimestamp = java.time.LocalDateTime.now().format('yyyy-MM-dd HH:mm:ss.SSS')

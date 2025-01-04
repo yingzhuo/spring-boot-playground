@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.spring.turbo.jwt)
     implementation(libs.spring.turbo.misc)
     implementation(libs.spring.turbo.redis)
+    implementation(libs.spring.turbo.jdbc)
 
     // DB相关
     implementation(libs.mysql)
