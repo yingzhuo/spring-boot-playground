@@ -43,7 +43,7 @@ dependencies {
     // DB相关
     implementation(libs.mysql)
     implementation(libs.bundles.mybatis)
-    // implementation(libs.p6spy.spring.boot)
+    implementation(libs.p6spy.spring.boot)
 
     // redisson / redlock
     implementation(libs.redisson.redlock.spring.boot)
