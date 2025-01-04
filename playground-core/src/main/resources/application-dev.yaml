@@ -4,11 +4,6 @@
 spring:
   config:
     import: [ ]
-  datasource:
-    driver-class-name: "com.mysql.cj.jdbc.Driver"
-    url: "jdbc:mysql://192.168.31.165:3306/SpringBootPlayground?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai"
-    username: "root"
-    password: "root"
   data:
     redis:
       lettuce:
@@ -32,6 +27,21 @@ spring:
           - "192.168.31.166:6380"
           - "192.168.31.167:6379"
           - "192.168.31.167:6380"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# 数据源
+# ----------------------------------------------------------------------------------------------------------------------
+datasource:
+  master:
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    jdbc-url: "jdbc:mysql://192.168.31.165:3306/SpringBootPlayground?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai"
+    username: "root"
+    password: "root"
+  slave:
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    jdbc-url: "jdbc:mysql://192.168.31.166:3306/SpringBootPlayground?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai"
+    username: "root"
+    password: "root"
 
 # ----------------------------------------------------------------------------------------------------------------------
 # 分布式锁配置

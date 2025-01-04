@@ -1,5 +1,7 @@
 package com.github.yingzhuo.playground.service.impl;
 
+import com.github.yingzhuo.playground.include.jdbc.DataSourceNames;
+import com.github.yingzhuo.playground.include.jdbc.annotation.DataSourceSwitch;
 import com.github.yingzhuo.playground.mapper.UserMapper;
 import com.github.yingzhuo.playground.security.UserWrapper;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ public class JdbcUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.SUPPORTS, readOnly = true)
+    @DataSourceSwitch(DataSourceNames.SLAVE)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userMapper.findByUsername(username);
 

@@ -69,18 +69,18 @@ spring:
   pid:
     file: "/var/run/${spring.application.name}/pid"
     fail-on-write-error: false
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      pool-name: "HikariCP"
-      minimum-idle: 10
-      maximum-pool-size: 30
-      auto-commit: true
-      idle-timeout: 30000
-      max-lifetime: 900000
-      connection-timeout: 10000
-      connection-test-query: "SELECT 0"
-      validation-timeout: 1000
+  #  datasource:
+  #    type: com.zaxxer.hikari.HikariDataSource
+  #    hikari:
+  #      pool-name: "HikariCP"
+  #      minimum-idle: 10
+  #      maximum-pool-size: 30
+  #      auto-commit: true
+  #      idle-timeout: 30000
+  #      max-lifetime: 900000
+  #      connection-timeout: 10000
+  #      connection-test-query: "SELECT 0"
+  #      validation-timeout: 1000
   flyway:
     enabled: false
   security:
@@ -95,6 +95,10 @@ spring:
         keep-alive: 60s
         queue-capacity: 45
         allow-core-thread-timeout: true
+  data:
+    jdbc:
+      repositories:
+        enabled: false
 
 # ----------------------------------------------------------------------------------------------------------------------
 # 服务器相关配置
@@ -177,18 +181,18 @@ mybatis-plus:
     db-config:
       table-prefix: "t_"
   mapperLocations:
-    - "classpath*:/mybatis-mapper/**/*.xml"
+    - "classpath*:/mybatis-mapper/**/*Mapper.xml"
   type-aliases-package: com.github.yingzhuo.playground.entity,com.github.yingzhuo.playground.dto
 
 # ----------------------------------------------------------------------------------------------------------------------
 # SQL日志
 # ----------------------------------------------------------------------------------------------------------------------
-decorator:
-  datasource:
-    p6spy:
-      enable-logging: true
-      multiline: true
-      logging: slf4j
+#decorator:
+#  datasource:
+#    p6spy:
+#      enable-logging: true
+#      multiline: true
+#      logging: slf4j
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Swagger
