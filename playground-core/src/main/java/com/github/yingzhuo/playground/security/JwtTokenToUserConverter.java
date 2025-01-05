@@ -39,10 +39,11 @@ public class JwtTokenToUserConverter extends AbstractJwtTokenToUserConverter imp
     // -----------------------------------------------------------------------------------------------------------------
 
     @Data
-    private static class UserAttributes implements UserDetails {
+    public static class UserAttributes implements UserDetails {
 
         private static final String NO_PASS = UserAttributes.class.getName() + "#NO_PASS";
 
+        private String userId;
         private String username;
         private String[] roles;
 

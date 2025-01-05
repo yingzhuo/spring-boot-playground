@@ -1,5 +1,6 @@
 package com.github.yingzhuo.playground.service.impl;
 
+import com.github.yingzhuo.playground.entity.User;
 import com.github.yingzhuo.playground.entity.UserPasswordHistory;
 import com.github.yingzhuo.playground.mapper.UserMapper;
 import com.github.yingzhuo.playground.mapper.UserPasswordHistoryMapper;
@@ -7,6 +8,7 @@ import com.github.yingzhuo.playground.service.UserService;
 import com.github.yingzhuo.playground.util.IDGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,6 +35,17 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserPasswordHistoryMapper userPasswordHistoryMapper;
     private final IDGenerator idGenerator;
+
+
+    @Nullable
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @DataSourceSwitch("slave")
+    public User findByUserById(String userId) {
+        var user = userMapper.selectById(userId);
+        log.debug("user = {}", user);
+        return user;
+    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)

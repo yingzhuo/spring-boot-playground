@@ -3,11 +3,9 @@ package com.github.yingzhuo.playground.service;
 import com.github.yingzhuo.playground.entity.User;
 import org.springframework.lang.Nullable;
 
-public interface UserService {
+public interface LoginService {
 
     @Nullable
-    public User findByUserById(String userId);
-
-    public void resetPassword(String userId, String newPassword);
+    public User tryToLogin(String username, String password);
 
 }

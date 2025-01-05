@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.RequestCacheConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import spring.turbo.module.security.authentication.TokenToUserConverter;
@@ -95,11 +94,11 @@ public class ApplicationBootSecurity {
         // enable
         http.cors(Customizer.withDefaults());
 
-        // enabled
-        http.x509(c ->
-                c.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
-                        .userDetailsService(context.getBean(UserDetailsService.class))
-        );
+        // disabled
+//        http.x509(c ->
+//                c.subjectPrincipalRegex("CN=(.*?)(?:,|$)")
+//                        .userDetailsService(context.getBean(UserDetailsService.class))
+//        );
 
         // handle errors
         http.exceptionHandling(c ->
