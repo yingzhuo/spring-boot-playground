@@ -37,7 +37,6 @@ dependencies {
     implementation(libs.spring.turbo.webcli)
     implementation(libs.spring.turbo.security)
     implementation(libs.spring.turbo.jwt)
-    implementation(libs.spring.turbo.misc)
     implementation(libs.spring.turbo.redis)
     implementation(libs.spring.turbo.jdbc)
 
@@ -133,15 +132,6 @@ bootJar {
     }
 
     def excludePatterns = [
-            '**/.DS_Store',
-            '**/.gitkeep',
-            '**/junit-*.jar',
-            '**/mockito-*.jar',
-            '**/opentest4j-*.jar',
-            '**/spring-test-*.jar',
-            '**/spring-boot-test-*.jar',
-            '**/spring-boot-configuration-processor-*.jar',
-            '**/spring-security-test-*.jar',
             '**/log4j-api-*.jar',
             '**/log4j-to-slf4j-*.jar'
     ]

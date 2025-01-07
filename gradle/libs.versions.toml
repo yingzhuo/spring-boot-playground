@@ -8,10 +8,6 @@ findbugs = 'com.github.spotbugs:spotbugs-annotations:4.8.6'
 
 mapstruct = 'org.mapstruct:mapstruct:1.6.3'
 
-#bc-prov = { module = 'org.bouncycastle:bcprov-jdk18on', version.ref = 'bouncy-castle' }
-#bc-pkix = { module = 'org.bouncycastle:bcpkix-jdk18on', version.ref = 'bouncy-castle' }
-#bc-util = { module = 'org.bouncycastle:bcutil-jdk18on', version.ref = 'bouncy-castle' }
-
 p6spy-spring-boot = 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.10.0'
 
 spring-turbo = { module = 'com.github.yingzhuo:spring-turbo', version.ref = 'spring-turbo' }
@@ -20,13 +16,10 @@ spring-turbo-webcli = { module = 'com.github.yingzhuo:spring-turbo-module-webcli
 spring-turbo-jackson = { module = 'com.github.yingzhuo:spring-turbo-module-jackson', version.ref = 'spring-turbo' }
 spring-turbo-security = { module = 'com.github.yingzhuo:spring-turbo-module-security', version.ref = 'spring-turbo' }
 spring-turbo-jwt = { module = 'com.github.yingzhuo:spring-turbo-module-jwt', version.ref = 'spring-turbo' }
-spring-turbo-misc = { module = 'com.github.yingzhuo:spring-turbo-module-misc', version.ref = 'spring-turbo' }
 spring-turbo-redis = { module = 'com.github.yingzhuo:spring-turbo-module-redis', version.ref = 'spring-turbo' }
 spring-turbo-jdbc = { module = 'com.github.yingzhuo:spring-turbo-module-jdbc', version.ref = 'spring-turbo' }
 
 redisson-redlock-spring-boot = 'com.github.yingzhuo:redisson-redlock-spring-boot-starter:1.0.4'
-
-#xxljob-core = "com.xuxueli:xxl-job-core:2.4.2"
 
 mysql = 'com.mysql:mysql-connector-j:9.1.0'
 
@@ -34,7 +27,6 @@ mybatis-plus = 'com.baomidou:mybatis-plus-spring-boot3-starter:3.5.9'
 mybatis = 'org.mybatis:mybatis:3.5.17'
 
 [bundles]
-#bouncy-castle = ['bc-prov', 'bc-pkix', 'bc-util']
 mybatis = ['mybatis', 'mybatis-plus']
 
 [plugins]

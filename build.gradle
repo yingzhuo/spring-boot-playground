@@ -3,12 +3,12 @@ import org.apache.tools.ant.filters.Native2AsciiFilter
 import java.time.LocalDateTime;
 
 group = 'com.github.yingzhuo'
-version = '0.3.4'
+version = '0.3.5'
 description = 'Demo of SpringBoot Application & Gradle'
 
 // 微调 org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES 中的版本号
 // 参考: https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
-ext['logback.version'] = '1.5.15'
+ext['logback.version'] = '1.5.16'
 
 ext {
     buildTimestamp = LocalDateTime.now().format('yyyy-MM-dd HH:mm:ss.SSS')
